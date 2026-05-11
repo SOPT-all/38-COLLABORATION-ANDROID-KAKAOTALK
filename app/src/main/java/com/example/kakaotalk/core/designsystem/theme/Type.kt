@@ -24,38 +24,38 @@ data class KakaoTalkTypography(
 )
 
 private val PretendardFontFamily = FontFamily(
-    Font(R.font.pretendard_medium, weight = FontWeight.Normal),
+    Font(R.font.pretendard_medium, weight = FontWeight.Medium),
     Font(R.font.pretendard_bold, weight = FontWeight.Bold),
 )
 
 val defaultKakaoTalkTypography = KakaoTalkTypography(
     body1 = TextStyle(
         fontFamily = PretendardFontFamily,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.Medium,
         fontSize = 16.sp,
         letterSpacing = 0.01.em
     ),
     body2 = TextStyle(
         fontFamily = PretendardFontFamily,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.Medium,
         fontSize = 15.sp,
         letterSpacing = 0.01.em
     ),
     body3 = TextStyle(
         fontFamily = PretendardFontFamily,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.Medium,
         fontSize = 13.sp,
         letterSpacing = 0.01.em
     ),
     body4 = TextStyle(
         fontFamily = PretendardFontFamily,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.Medium,
         fontSize = 12.sp,
         letterSpacing = 0.01.em
     ),
     body5 = TextStyle(
         fontFamily = PretendardFontFamily,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.Medium,
         fontSize = 11.sp,
         letterSpacing = 0.01.em
     ),
