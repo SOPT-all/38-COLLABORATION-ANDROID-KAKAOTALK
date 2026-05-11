@@ -4,6 +4,30 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
+private val Gray900 = Color(0xFF393939)
+private val Gray800 = Color(0xFF4D4D4D)
+private val Gray700 = Color(0xFF595959)
+private val Gray600 = Color(0xFF737373)
+private val Gray500 = Color(0xFFB6B6B6)
+private val Gray400 = Color(0xFFCDCDCD)
+private val Gray300 = Color(0xFFDBDBDB)
+private val Gray200 = Color(0xFFF0F0F0)
+private val Gray100 = Color(0xFFF5F5F5)
+
+private val Blue300 = Color(0xFF2F363E)
+private val Blue200 = Color(0xFF4A535A)
+private val Blue100 = Color(0xFFB8BCBF)
+
+private val White = Color(0xFFFFFFFF)
+private val Black = Color(0xFF191919)
+
+private val Yellow400 = Color(0xFFFFF9C4)
+private val Yellow500 = Color(0xFFFEE500)
+private val Yellow600 = Color(0xFFF6DE00)
+
+private val Orange300 = Color(0xFFEA5B21)
+private val Orange200 = Color(0xFFFF9117)
+private val Orange100 = Color(0xFFFDEEE7)
 @Immutable
 data class KakaoTalkColors(
     val gray900: Color,
@@ -33,30 +57,31 @@ data class KakaoTalkColors(
 )
 
 val defaultKakaoTalkColors = KakaoTalkColors(
-    gray900 = Color(0xFF393939),
-    gray800 = Color(0xFF4D4D4D),
-    gray700 = Color(0xFF595959),
-    gray600 = Color(0xFF737373),
-    gray500 = Color(0xFFB6B6B6),
-    gray400 = Color(0xFFCDCDCD),
-    gray300 = Color(0xFFDBDBDB),
-    gray200 = Color(0xFFF0F0F0),
-    gray100 = Color(0xFFF5F5F5),
+    gray900 = Gray900,
+    gray800 = Gray800,
+    gray700 = Gray700,
+    gray600 = Gray600,
+    gray500 = Gray500,
+    gray400 = Gray400,
+    gray300 = Gray300,
+    gray200 = Gray200,
+    gray100 = Gray100,
 
-    blue300 = Color(0xFF2F363E),
-    blue200 = Color(0xFF4A535A),
-    blue100 = Color(0xFFB8BCBF),
+    blue300 = Blue300,
+    blue200 = Blue200,
+    blue100 = Blue100,
 
-    white = Color(0xFFFFFFFF),
-    black = Color(0xFF191919),
+    white = White,
+    black = Black,
 
-    yellow400 = Color(0xFFFFF9C4),
-    yellow500 = Color(0xFFFEE500),
-    yellow600 = Color(0xFFF6DE00),
+    yellow400 = Yellow400,
+    yellow500 = Yellow500,
+    yellow600 = Yellow600,
 
-    orange300 = Color(0xFFEA5B21),
-    orange200 = Color(0xFFFF9117),
-    orange100 = Color(0xFFFDEEE7)
+    orange300 = Orange300,
+    orange200 = Orange200,
+
+    orange100 = Orange100
 )
 
 val LocalKakaoTalkColorProvider = staticCompositionLocalOf {
