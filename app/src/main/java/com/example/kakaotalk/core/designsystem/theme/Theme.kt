@@ -1,3 +1,5 @@
+package com.example.kakaotalk.core.designsystem.theme
+
 import android.app.Activity
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.lightColorScheme
@@ -7,12 +9,6 @@ import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
-import com.example.kakaotalk.core.designsystem.theme.KakaoTalkColors
-import com.example.kakaotalk.core.designsystem.theme.KakaoTalkTypography
-import com.example.kakaotalk.core.designsystem.theme.LocalKakaoTalkColorProvider
-import com.example.kakaotalk.core.designsystem.theme.LocalKakaoTalkTypographyProvider
-import com.example.kakaotalk.core.designsystem.theme.defaultKakaoTalkColors
-import com.example.kakaotalk.core.designsystem.theme.defaultKakaoTalkTypography
 
 //해당 Scheme는 Figma System에 기재되어있지 않아 Figma 디자인보고 분석해서 넣어줬습니다.
 private val KakaoTalkColorScheme = lightColorScheme(
@@ -34,7 +30,7 @@ private val KakaoTalkColorScheme = lightColorScheme(
 
 
 @Composable
-fun KakaoTalkTheme(
+fun KakaoTheme(
     colors: KakaoTalkColors = defaultKakaoTalkColors,
     typography: KakaoTalkTypography = defaultKakaoTalkTypography,
     content: @Composable () -> Unit
@@ -58,7 +54,7 @@ fun KakaoTalkTheme(
     }
 }
 
-object KakaoTalkTheme {
+object KakaoTheme {
     val colors: KakaoTalkColors
         @Composable
         @ReadOnlyComposable
