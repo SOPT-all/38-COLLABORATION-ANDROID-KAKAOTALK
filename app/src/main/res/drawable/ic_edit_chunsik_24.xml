@@ -1,0 +1,77 @@
+<!--
+  ~ Copyright (C) 2026 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+  <path
+      android:strokeWidth="1"
+      android:pathData="M12.146,4.5C13.461,4.5 14.601,4.58 15.762,5.061C15.852,5.016 15.948,4.976 16.044,4.941C16.238,4.871 16.476,4.811 16.708,4.811C17.287,4.811 17.724,5.206 17.988,5.613C18.26,6.034 18.424,6.575 18.424,7.099C18.424,7.12 18.421,7.14 18.42,7.16C19.942,8.614 20.278,10.816 20.278,12.467C20.278,14.942 19.369,16.734 17.808,17.889C16.271,19.027 14.165,19.5 11.841,19.5C9.486,19.5 7.458,18.854 6.009,17.633C4.551,16.404 3.722,14.626 3.722,12.467C3.722,10.439 4.364,8.552 5.876,7.154C5.876,7.149 5.876,7.143 5.875,7.138C5.87,7.031 5.868,6.921 5.868,6.866C5.868,6.473 5.956,5.985 6.208,5.578C6.476,5.147 6.929,4.811 7.583,4.811C7.801,4.811 8.04,4.873 8.232,4.94C8.329,4.974 8.43,5.016 8.526,5.062C9.689,4.58 10.83,4.5 12.146,4.5Z"
+      android:fillColor="#FFD376"
+      android:strokeColor="#000000"/>
+  <path
+      android:pathData="M9.119,11.087a0.576,0.609 0,1 0,1.152 0a0.576,0.609 0,1 0,-1.152 0z"
+      android:fillColor="#000000"/>
+  <path
+      android:pathData="M13.728,11.087a0.576,0.609 0,1 0,1.152 0a0.576,0.609 0,1 0,-1.152 0z"
+      android:fillColor="#000000"/>
+  <path
+      android:pathData="M14.122,13.522a1.819,1.826 0,1 0,3.639 0a1.819,1.826 0,1 0,-3.639 0z"
+      android:fillColor="#FF8F6A"/>
+  <path
+      android:pathData="M6.239,13.522a1.819,1.826 0,1 0,3.639 0a1.819,1.826 0,1 0,-3.639 0z"
+      android:fillColor="#FF8F6A"/>
+  <path
+      android:pathData="M13.932,12.906C15.055,12.578 15.336,12.496 15.336,12.496"
+      android:strokeWidth="0.5"
+      android:fillColor="#00000000"
+      android:strokeColor="#000000"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M10.068,12.906C8.945,12.578 8.664,12.496 8.664,12.496"
+      android:strokeWidth="0.5"
+      android:fillColor="#00000000"
+      android:strokeColor="#000000"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M15.335,14.123C14.212,13.795 13.932,13.713 13.932,13.713"
+      android:strokeWidth="0.5"
+      android:fillColor="#00000000"
+      android:strokeColor="#000000"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M8.664,14.123C9.787,13.795 10.068,13.713 10.068,13.713"
+      android:strokeWidth="0.5"
+      android:fillColor="#00000000"
+      android:strokeColor="#000000"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M12.615,14.739C12.285,15.043 12.32,15.348 11.956,15.348C11.593,15.348 11.627,15.043 11.298,14.739C10.969,14.435 11.627,14.13 11.956,13.826C12.286,14.13 12.944,14.435 12.615,14.739Z"
+      android:fillColor="#F1CCD8"/>
+  <path
+      android:pathData="M10.969,14.435C11.956,15.652 12.285,15.348 12.944,14.435"
+      android:strokeWidth="0.5"
+      android:fillColor="#00000000"
+      android:strokeColor="#000000"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M10.969,14.435C11.627,14.435 11.956,13.826 11.956,13.826C11.956,13.826 12.286,14.435 12.944,14.435C13.602,14.435 13.932,14.131 13.932,13.522C13.932,12.304 12.803,12.304 11.956,12.304C11.11,12.304 9.981,12.304 9.981,13.522C9.981,14.131 10.31,14.435 10.969,14.435Z"
+      android:strokeWidth="0.5"
+      android:fillColor="#ffffff"
+      android:strokeColor="#000000"
+      android:strokeLineCap="round"/>
+</vector>
