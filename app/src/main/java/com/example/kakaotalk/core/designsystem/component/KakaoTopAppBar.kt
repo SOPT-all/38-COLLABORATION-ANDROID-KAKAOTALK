@@ -1,7 +1,7 @@
 package com.example.kakaotalk.core.designsystem.component
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -28,18 +28,15 @@ fun KakaoTopAppBar(
     onSuccessClick: () -> Unit = {},
     isSuccessVisible: Boolean = false
 ){
-
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(vertical = 12.dp),
-        verticalAlignment = Alignment.CenterVertically,
+    Box(
+        modifier = modifier.fillMaxWidth()
     ) {
         Icon(
             painter = painterResource(id = R.drawable.ic_arrow_line_24),
             contentDescription = null,
             modifier = Modifier
                 .padding(end = 16.dp)
+                .align(Alignment.CenterStart)
                 .size(25.dp)
                 .noRippleClickable(onClick = onBackClick),
             tint = color
@@ -47,16 +44,18 @@ fun KakaoTopAppBar(
 
         Text(
             text = text,
-            color = color,
+            modifier = Modifier
+                .padding(start = 41.dp)
+                .align(Alignment.CenterStart),
             style = KakaoTheme.typography.head2
         )
         
         if (isSuccessVisible) {
-            Spacer(modifier = Modifier.weight(1f))
-
             Text(
                 text = "완료",
-                modifier = Modifier.noRippleClickable(onClick = onSuccessClick),
+                modifier = Modifier
+                    .align(Alignment.CenterEnd)
+                    .noRippleClickable(onClick = onSuccessClick),
                 color = color,
                 style = KakaoTheme.typography.body2
             )
