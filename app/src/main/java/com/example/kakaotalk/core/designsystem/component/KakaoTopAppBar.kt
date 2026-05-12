@@ -55,7 +55,6 @@ fun KakaoTopAppBar(
                 modifier = Modifier
                     .align(Alignment.CenterEnd)
                     .noRippleClickable(onClick = onCompleteClick),
-                color = color,
                 style = KakaoTheme.typography.body2
             )
         }
