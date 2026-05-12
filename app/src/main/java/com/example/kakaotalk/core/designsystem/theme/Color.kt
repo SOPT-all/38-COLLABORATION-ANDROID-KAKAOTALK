@@ -28,6 +28,7 @@ private val Yellow600 = Color(0xFFF6DE00)
 private val Orange300 = Color(0xFFEA5B21)
 private val Orange200 = Color(0xFFFF9117)
 private val Orange100 = Color(0xFFFDEEE7)
+
 @Immutable
 data class KakaoTalkColors(
     val gray900: Color,
@@ -80,7 +81,6 @@ val defaultKakaoTalkColors = KakaoTalkColors(
 
     orange300 = Orange300,
     orange200 = Orange200,
-
     orange100 = Orange100
 )
 
