@@ -25,8 +25,8 @@ fun KakaoTopAppBar(
     text: String = "채팅방 폴더 관리",
     color: Color = KakaoTheme.colors.black,
     onBackClick: () -> Unit = {},
-    onSuccessClick: () -> Unit = {},
-    isSuccessVisible: Boolean = false
+    onCompleteClick: () -> Unit = {},
+    showCompleteAction: Boolean = false
 ){
     Box(
         modifier = modifier.fillMaxWidth()
@@ -38,9 +38,8 @@ fun KakaoTopAppBar(
                 .padding(end = 16.dp)
                 .align(Alignment.CenterStart)
                 .size(25.dp)
-                .noRippleClickable(onClick = onBackClick),
-            tint = color
-        )
+                .noRippleClickable(onClick = onBackClick)
+            )
 
         Text(
             text = text,
@@ -50,12 +49,12 @@ fun KakaoTopAppBar(
             style = KakaoTheme.typography.head2
         )
         
-        if (isSuccessVisible) {
+        if (showCompleteAction) {
             Text(
                 text = "완료",
                 modifier = Modifier
                     .align(Alignment.CenterEnd)
-                    .noRippleClickable(onClick = onSuccessClick),
+                    .noRippleClickable(onClick = onCompleteClick),
                 color = color,
                 style = KakaoTheme.typography.body2
             )
@@ -74,7 +73,7 @@ private fun KakaoTopAppBarPreview(){
 
             KakaoTopAppBar(
                 text = "폴더 편집",
-                isSuccessVisible = true
+                showCompleteAction = true
             )
         }
     }
