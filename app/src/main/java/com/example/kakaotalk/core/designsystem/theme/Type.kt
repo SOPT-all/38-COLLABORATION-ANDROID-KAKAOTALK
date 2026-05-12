@@ -1,34 +1,90 @@
 package com.example.kakaotalk.core.designsystem.theme
 
-import androidx.compose.material3.Typography
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import com.example.kakaotalk.R
 
-// Set of Material typography styles to start with
-val Typography = Typography(
-    bodyLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
+@Immutable
+data class KakaoTalkTypography(
+    val body1: TextStyle,
+    val body2: TextStyle,
+    val body3: TextStyle,
+    val body4: TextStyle,
+    val body5: TextStyle,
+    val head1: TextStyle,
+    val head2: TextStyle,
+    val head3: TextStyle,
+    val head4: TextStyle
+)
+
+private val PretendardFontFamily = FontFamily(
+    Font(R.font.pretendard_medium, weight = FontWeight.Medium),
+    Font(R.font.pretendard_bold, weight = FontWeight.Bold),
+)
+
+val defaultKakaoTalkTypography = KakaoTalkTypography(
+    body1 = TextStyle(
+        fontFamily = PretendardFontFamily,
+        fontWeight = FontWeight.Medium,
         fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
-    )
-    /* Other default text styles to override
-    titleLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 22.sp,
-        lineHeight = 28.sp,
-        letterSpacing = 0.sp
+        letterSpacing = 0.01.em
     ),
-    labelSmall = TextStyle(
-        fontFamily = FontFamily.Default,
+    body2 = TextStyle(
+        fontFamily = PretendardFontFamily,
+        fontWeight = FontWeight.Medium,
+        fontSize = 15.sp,
+        letterSpacing = 0.01.em
+    ),
+    body3 = TextStyle(
+        fontFamily = PretendardFontFamily,
+        fontWeight = FontWeight.Medium,
+        fontSize = 13.sp,
+        letterSpacing = 0.01.em
+    ),
+    body4 = TextStyle(
+        fontFamily = PretendardFontFamily,
+        fontWeight = FontWeight.Medium,
+        fontSize = 12.sp,
+        letterSpacing = 0.01.em
+    ),
+    body5 = TextStyle(
+        fontFamily = PretendardFontFamily,
         fontWeight = FontWeight.Medium,
         fontSize = 11.sp,
-        lineHeight = 16.sp,
-        letterSpacing = 0.5.sp
+        letterSpacing = 0.01.em
+    ),
+    head1 = TextStyle(
+        fontFamily = PretendardFontFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = 22.sp,
+        letterSpacing = 0.05.em
+    ),
+    head2 = TextStyle(
+        fontFamily = PretendardFontFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = 16.sp,
+        letterSpacing = 0.05.em
+    ),
+    head3 = TextStyle(
+        fontFamily = PretendardFontFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = 14.sp,
+        letterSpacing = 0.05.em
+    ),
+    head4 = TextStyle(
+        fontFamily = PretendardFontFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = 12.sp,
+        letterSpacing = 0.05.em
     )
-    */
 )
+
+val LocalKakaoTalkTypographyProvider = staticCompositionLocalOf {
+    defaultKakaoTalkTypography
+}
