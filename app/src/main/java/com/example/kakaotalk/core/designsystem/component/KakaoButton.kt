@@ -77,7 +77,6 @@ private fun KakaoButtonPreview(){
             KakaoButton(
                 text = "작품추가하기",
                 iconRes = R.drawable.ic_plus_24,
-                textColor = Color.Red,
             )
         }
     }
