@@ -21,11 +21,11 @@ import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 
 @Composable
 fun KakaoTopAppBar(
+    text: String,
+    onBackClick: () -> Unit,
+    onCompleteClick: () -> Unit,
     modifier: Modifier = Modifier,
-    text: String = "채팅방 폴더 관리",
-    color: Color = KakaoTheme.colors.black,
-    onBackClick: () -> Unit = {},
-    onCompleteClick: () -> Unit = {},
+    completeTextColor: Color = KakaoTheme.colors.black,
     showCompleteAction: Boolean = false
 ){
     Box(
@@ -38,7 +38,8 @@ fun KakaoTopAppBar(
                 .padding(end = 16.dp)
                 .align(Alignment.CenterStart)
                 .size(25.dp)
-                .noRippleClickable(onClick = onBackClick)
+                .noRippleClickable(onClick = onBackClick),
+            tint = KakaoTheme.colors.black
             )
 
         Text(
@@ -46,6 +47,7 @@ fun KakaoTopAppBar(
             modifier = Modifier
                 .padding(start = 41.dp)
                 .align(Alignment.CenterStart),
+            color = KakaoTheme.colors.black,
             style = KakaoTheme.typography.head2
         )
         
@@ -66,12 +68,18 @@ fun KakaoTopAppBar(
 private fun KakaoTopAppBarPreview(){
     KakaoTheme {
         Column(){
-            KakaoTopAppBar()
+            KakaoTopAppBar(
+                text = "채팅방 폴더 관리",
+                onBackClick = {},
+                onCompleteClick = {}
+            )
 
             Spacer(modifier = Modifier.size(10.dp))
 
             KakaoTopAppBar(
                 text = "폴더 편집",
+                onBackClick = {},
+                onCompleteClick = {},
                 showCompleteAction = true
             )
         }
