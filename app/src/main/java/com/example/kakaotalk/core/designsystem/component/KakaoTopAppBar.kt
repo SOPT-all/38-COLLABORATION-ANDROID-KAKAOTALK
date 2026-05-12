@@ -33,7 +33,6 @@ fun KakaoTopAppBar(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .background(Color.White)
             .padding(vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
