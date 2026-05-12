@@ -10,25 +10,6 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-//해당 Scheme는 Figma System에 기재되어있지 않아 Figma 디자인보고 분석해서 넣어줬습니다.
-private val KakaoTalkColorScheme = lightColorScheme(
-    // 기본색
-    primary = defaultKakaoTalkColors.yellow500,
-    onPrimary = defaultKakaoTalkColors.black,
-
-    // 배경색
-    background = defaultKakaoTalkColors.white,
-    onBackground = defaultKakaoTalkColors.black,
-
-    // 표면색
-    surface = defaultKakaoTalkColors.white,
-    onSurface = defaultKakaoTalkColors.black,
-
-    // 보조색
-    secondary = defaultKakaoTalkColors.blue200,
-)
-
-
 @Composable
 fun KakaoTheme(
     colors: KakaoTalkColors = defaultKakaoTalkColors,
@@ -48,7 +29,6 @@ fun KakaoTheme(
         LocalKakaoTalkTypographyProvider provides typography
     ) {
         MaterialTheme(
-            colorScheme = KakaoTalkColorScheme,
             content = content
         )
     }
