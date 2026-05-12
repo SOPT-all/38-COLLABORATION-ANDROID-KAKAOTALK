@@ -70,8 +70,7 @@ private fun KakaoTopAppBarPreview(){
         Column(){
             KakaoTopAppBar(
                 text = "채팅방 폴더 관리",
-                onBackClick = {},
-                onCompleteClick = {}
+                onBackClick = {}
             )
 
             Spacer(modifier = Modifier.size(10.dp))
