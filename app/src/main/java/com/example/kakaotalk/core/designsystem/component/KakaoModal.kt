@@ -1,9 +1,5 @@
 package com.example.kakaotalk.core.designsystem.component
 
-import android.R.attr.description
-import android.R.attr.onClick
-import android.R.attr.textColor
-import android.R.attr.type
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -78,7 +74,7 @@ fun KakaoModal(
                 Spacer(Modifier.height(16.dp))
 
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
                     modifier = Modifier.fillMaxWidth(),
                 ) {
                     KakaoModalButton(
@@ -108,9 +104,8 @@ private fun KakaoModalButton(
 ) {
     Box(
         modifier = modifier
-            .fillMaxWidth()
-            .clickable { onClick() }
             .clip(RoundedCornerShape(50.dp))
+            .clickable { onClick() }
             .background(backgroundColor)
             .padding(vertical = 8.dp),
         contentAlignment = Alignment.Center,
