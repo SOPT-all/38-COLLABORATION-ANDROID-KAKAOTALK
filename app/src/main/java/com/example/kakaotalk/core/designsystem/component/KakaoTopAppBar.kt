@@ -22,9 +22,9 @@ import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 @Composable
 fun KakaoTopAppBar(
     text: String,
-    onBackClick: () -> Unit,
-    onCompleteClick: () -> Unit,
     modifier: Modifier = Modifier,
+    onBackClick: () -> Unit,
+    onCompleteClick: () -> Unit = {},
     completeTextColor: Color = KakaoTheme.colors.black,
     showCompleteAction: Boolean = false
 ){
