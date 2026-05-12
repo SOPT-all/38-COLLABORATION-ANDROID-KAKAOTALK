@@ -22,8 +22,8 @@ import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 @Composable
 fun KakaoTopAppBar(
     text: String,
-    modifier: Modifier = Modifier,
     onBackClick: () -> Unit,
+    modifier: Modifier = Modifier,
     onCompleteClick: () -> Unit = {},
     completeTextColor: Color = KakaoTheme.colors.black,
     showCompleteAction: Boolean = false
@@ -57,7 +57,8 @@ fun KakaoTopAppBar(
                 modifier = Modifier
                     .align(Alignment.CenterEnd)
                     .noRippleClickable(onClick = onCompleteClick),
-                style = KakaoTheme.typography.body2
+                style = KakaoTheme.typography.body2,
+                color = completeTextColor
             )
         }
     }
