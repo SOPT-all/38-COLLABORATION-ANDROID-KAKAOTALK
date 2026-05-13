@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
@@ -27,7 +26,10 @@ fun KakaoDivider(
 ){
     Box(
         modifier = modifier
-            .width(if (dividerType == DividerType.Default) 328.dp else 360.dp)
+            .width(
+                if (dividerType == DividerType.Default) 328.dp
+                else 360.dp
+            )
             .height(1.dp)
             .background(backgroundColor)
     )
