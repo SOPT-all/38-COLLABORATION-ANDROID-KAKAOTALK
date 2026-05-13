@@ -1,4 +1,4 @@
-package com.example.kakaotalk.core.designsystem.component
+package com.example.kakaotalk.core.designsystem.component.KakaFolder
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
