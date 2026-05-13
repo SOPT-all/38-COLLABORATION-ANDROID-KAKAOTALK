@@ -44,7 +44,7 @@ fun KakaoModal(
         Box(
             modifier = modifier
                 .fillMaxWidth()
-                .padding(16.dp),
+                .padding(40.dp),
             contentAlignment = Alignment.Center,
         ){
             Column(
