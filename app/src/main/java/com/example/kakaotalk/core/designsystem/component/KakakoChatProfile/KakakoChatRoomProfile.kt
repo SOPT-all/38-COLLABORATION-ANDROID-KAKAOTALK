@@ -1,4 +1,4 @@
-package com.example.kakaotalk.core.designsystem.component
+package com.example.kakaotalk.core.designsystem.component.KakakoChatProfile
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
