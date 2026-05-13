@@ -1,4 +1,4 @@
-package com.example.kakaotalk.core.designsystem.component.KakaFolder
+package com.example.kakaotalk.core.designsystem.component.KakaoFolder
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
@@ -42,17 +42,22 @@ fun KakaoFolderAddItem(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
-            Icon(
-                painter = painterResource(id = icon),
-                contentDescription = null,
+            Box(
                 modifier = Modifier
                     .size(28.dp)
                     .background(
                         color = KakaoTheme.colors.gray200,
                         shape = CircleShape
                     ),
-                tint = iconColor
-            )
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    painter = painterResource(id = icon),
+                    contentDescription = null,
+                    modifier = Modifier.size(20.dp),
+                    tint = iconColor
+                )
+            }
 
             Spacer(modifier = Modifier.width(8.dp))
 
