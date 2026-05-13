@@ -21,7 +21,7 @@ fun KakaoChatProfile(
         painter = painterResource(iconRes ?: R.drawable.ic_profile_blue_24),
         contentDescription = null,
         modifier = modifier
-            .size(19.dp)
+            .size(23.dp)
     )
 }
 

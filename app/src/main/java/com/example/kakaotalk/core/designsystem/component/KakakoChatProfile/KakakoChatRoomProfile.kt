@@ -3,7 +3,9 @@ package com.example.kakaotalk.core.designsystem.component.KakakoChatProfile
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -18,18 +20,18 @@ fun KakaoChatRoomProfile(
     modifier : Modifier = Modifier
 ) {
     Column(
-        modifier = modifier
-            .size(40.dp),
-        verticalArrangement = Arrangement.SpaceBetween,
+        modifier = modifier,
+        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier,
+            horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically,
         ) {
+            // 가운데 padding Spacer로 넣기엔 좀 애매해지는 것 같아서 ChatProfile 상에서 padding 넣는것으로 명시해줬습니다
             KakaoChatProfile(
+                modifier = Modifier.padding(end = 2.dp),
                 iconRes = R.drawable.ic_profile_blue_24
             )
 
@@ -37,17 +39,18 @@ fun KakaoChatRoomProfile(
                 iconRes = R.drawable.ic_profile_blue_24
             )
         }
+        
+        Spacer(modifier = Modifier.padding(top = 2.dp))
 
         Row(
-            modifier = Modifier
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier,
+            horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically,
         ) {
             KakaoChatProfile(
+                modifier = Modifier.padding(end = 2.dp),
                 iconRes = R.drawable.ic_profile_light_blue_24
             )
-
             KakaoChatProfile(
                 iconRes = R.drawable.ic_profile_deep_blue_24
             )
