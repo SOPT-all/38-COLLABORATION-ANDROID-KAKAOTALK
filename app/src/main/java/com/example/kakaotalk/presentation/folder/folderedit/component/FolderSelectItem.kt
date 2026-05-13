@@ -1,0 +1,124 @@
+package com.example.kakaotalk.presentation.folder.folderedit.component
+
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.example.kakaotalk.R
+import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
+
+@Composable
+fun FolderSelectionItem(
+    totalFolder: Int,
+    selectedFolder: Int,
+    modifier: Modifier = Modifier,
+    isSelected: Boolean = false
+) {
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .height(30.dp)
+            .background(Color.White)
+    ){
+
+        Row(
+            modifier = Modifier.align(Alignment.CenterStart),
+            verticalAlignment = Alignment.CenterVertically
+        ){
+
+            Icon(
+                painter = painterResource(
+                    id = if (isSelected) R.drawable.ic_check_fill_24
+                        else R.drawable.ic_check_default_24
+                ),
+                contentDescription = null,
+                tint = Color.Unspecified,
+            )
+
+            Spacer(modifier = Modifier.padding((3.dp)))
+
+            Text(
+                text = "전체 선택",
+                style = KakaoTheme.typography.body3
+            )
+
+            Spacer(modifier = Modifier.padding((3.dp)))
+
+            Text(
+                text = "(${selectedFolder}/${totalFolder})",
+                style = KakaoTheme.typography.body3
+            )
+        }
+
+        Button(
+            onClick = {},
+            modifier = Modifier
+                .align(Alignment.CenterEnd)
+                .width(69.dp)
+                .height(30.dp)
+                .alpha(if (selectedFolder > 0) 1f else 0.5f),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = KakaoTheme.colors.white,
+                disabledContainerColor = KakaoTheme.colors.white,
+                contentColor = KakaoTheme.colors.white,
+                disabledContentColor = KakaoTheme.colors.white
+            ),
+            shape = RoundedCornerShape(999.dp),
+            border = BorderStroke(1.dp, KakaoTheme.colors.gray300),
+            contentPadding = PaddingValues()
+        ) {
+            Text(
+                text = "선택 해제",
+                color = KakaoTheme.colors.black,
+                style = KakaoTheme.typography.body4
+            )
+        }
+
+    }
+}
+
+@Preview
+@Composable
+private fun FolderSelectionItemPreview(){
+    Column() {
+        FolderSelectionItem(
+            totalFolder = 9,
+            selectedFolder = 0
+        )
+
+        Spacer(modifier = Modifier.padding(10.dp))
+
+        FolderSelectionItem(
+            totalFolder = 9,
+            selectedFolder = 5
+        )
+
+        Spacer(modifier = Modifier.padding(10.dp))
+
+        FolderSelectionItem(
+            totalFolder = 9,
+            selectedFolder = 9,
+            isSelected = true
+        )
+    }
+}
