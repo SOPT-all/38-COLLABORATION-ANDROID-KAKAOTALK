@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -23,7 +22,7 @@ import com.example.kakaotalk.R
 import com.example.kakaotalk.core.common.extension.noRippleClickable
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 
-sealed class MenuButtonType() {
+sealed class MenuButtonType {
     data class DefualtType(val text: String) : MenuButtonType()
     data class NumOfReadType(val number: Int) : MenuButtonType()
     data object PlusMenuType : MenuButtonType()
@@ -36,17 +35,31 @@ fun ChatListMenuButton(
     selected: Boolean = false,
     onClick: () -> Unit = {},
 ) {
+    // sealed 처리해서 한번에 공컴으로 처리하고 싶어서 color도 함수 변수로 처리했습니다
+    // PlusMenuType일땐 selected 상관없이 onClick만 감지하면 되서 색깔바뀌지 않게 고려한 코드입니다.
+    val backgroundColor = when {
+        type is MenuButtonType.PlusMenuType -> KakaoTheme.colors.white
+        selected -> KakaoTheme.colors.black
+        else -> KakaoTheme.colors.white
+    }
+    val borderColor = when {
+        type is MenuButtonType.PlusMenuType -> KakaoTheme.colors.gray300
+        selected -> KakaoTheme.colors.black
+        else -> KakaoTheme.colors.gray300
+    }
+
+
     Box(
         modifier = modifier
             .height(38.dp)
             .background(
-                color = if (selected) KakaoTheme.colors.black else KakaoTheme.colors.white,
+                color = backgroundColor,
                 shape = RoundedCornerShape(30.dp)
             )
             .border(
                 width = 1.dp,
-                color = if (selected) KakaoTheme.colors.black else KakaoTheme.colors.gray300,
-                shape = RoundedCornerShape(30.dp) // 둥근 모서리 설정
+                color = borderColor,
+                shape = RoundedCornerShape(30.dp)
             )
             .noRippleClickable(onClick = onClick),
         contentAlignment = Alignment.Center
@@ -55,6 +68,7 @@ fun ChatListMenuButton(
             is MenuButtonType.DefualtType -> {
                 Text(
                     text = type.text,
+                    modifier = Modifier.padding(horizontal = 17.dp),
                     color = if (selected) KakaoTheme.colors.white else KakaoTheme.colors.black,
                     style = KakaoTheme.typography.head3
                 )
@@ -62,15 +76,14 @@ fun ChatListMenuButton(
 
             is MenuButtonType.NumOfReadType -> {
                 Row(
+                    modifier = Modifier.padding(horizontal = 13.dp),
                     horizontalArrangement = Arrangement.spacedBy(2.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
                         painter = painterResource(R.drawable.ic_no_read_24),
                         contentDescription = null,
-                        modifier = Modifier
-                            .size(16.dp)
-                            .padding(4.dp),
+                        tint = null
                     )
 
                     Text(
@@ -86,7 +99,14 @@ fun ChatListMenuButton(
                 }
             }
 
-            else -> {}
+            is MenuButtonType.PlusMenuType -> {
+                Icon(
+                    painter = painterResource(R.drawable.ic_foler_plus_24),
+                    contentDescription = null,
+                    tint = null,
+                    modifier = Modifier.padding(horizontal = 7.dp)
+                )
+            }
         }
     }
 }
@@ -95,7 +115,7 @@ fun ChatListMenuButton(
 @Composable
 private fun ChatListMenuButtonPreview() {
     KakaoTheme {
-        Row() {
+        Row {
             ChatListMenuButton(
                 type = MenuButtonType.DefualtType("전체"),
             )
@@ -117,7 +137,6 @@ private fun ChatListMenuButtonPreview() {
 
             ChatListMenuButton(
                 type = MenuButtonType.PlusMenuType,
-                selected = true
             )
         }
     }
