@@ -15,13 +15,12 @@ import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 @Composable
 fun KakaoChatProfile(
     modifier: Modifier = Modifier,
-    @DrawableRes iconRes : Int = R.drawable.ic_profile_blue_24
+    @DrawableRes iconRes: Int = R.drawable.ic_profile_blue_24
 ) {
     Image(
         painter = painterResource(iconRes),
         contentDescription = null,
-        modifier = modifier
-            .size(23.dp)
+        modifier = modifier.size(23.dp)
     )
 }
 
