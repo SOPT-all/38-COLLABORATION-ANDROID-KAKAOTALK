@@ -1,7 +1,10 @@
 package com.example.kakaotalk.core.designsystem.component
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -20,7 +23,8 @@ import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 @Composable
 fun KakaoFolderHeader(
     onClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    showMore: Boolean = true
 ){
     Row(
         modifier = modifier
@@ -34,35 +38,48 @@ fun KakaoFolderHeader(
             style = KakaoTheme.typography.head4
         )
 
-        Row(
-            modifier = Modifier.noRippleClickable(onClick = onClick),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ){
-            Text(
-                text = "더보기",
-                style = KakaoTheme.typography.body5,
-                color = KakaoTheme.colors.gray500
-            )
+        if (showMore) {
+            Row(
+                modifier = Modifier.noRippleClickable(onClick = onClick),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = "더보기",
+                    style = KakaoTheme.typography.body5,
+                    color = KakaoTheme.colors.gray500
+                )
 
-            Icon(
-                painter = painterResource(id = R.drawable.ic_arrow_24),
-                modifier = Modifier.size(14.dp),
-                contentDescription = null,
-                tint = KakaoTheme.colors.gray500
-            )
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_arrow_24),
+                    modifier = Modifier.size(14.dp),
+                    contentDescription = null,
+                    tint = KakaoTheme.colors.gray500
+                )
+            }
         }
-
     }
 }
 
 
-@Preview (showBackground = true)
+@Preview
 @Composable
 private fun KakaoFolderHeaderPreview(){
     KakaoTheme{
-        KakaoFolderHeader(
-            onClick = {}
-        )
+        Column(){
+            KakaoFolderHeader(
+                modifier = Modifier.background(KakaoTheme.colors.white),
+                onClick = {}
+            )
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            KakaoFolderHeader(
+                modifier = Modifier.background(KakaoTheme.colors.white),
+                onClick = {},
+                showMore = false
+            )
+        }
+
     }
 }
