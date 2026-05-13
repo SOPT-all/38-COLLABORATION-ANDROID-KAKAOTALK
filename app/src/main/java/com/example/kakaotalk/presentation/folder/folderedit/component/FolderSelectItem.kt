@@ -25,12 +25,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.kakaotalk.R
+import com.example.kakaotalk.core.common.extension.noRippleClickable
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 
 @Composable
 fun FolderSelectionItem(
     totalFolder: Int,
     selectedFolder: Int,
+    onSelectClick: () -> Unit,
+    onClearClick: () -> Unit,
     modifier: Modifier = Modifier,
     isSelected: Boolean = false
 ) {
@@ -40,29 +43,28 @@ fun FolderSelectionItem(
             .height(30.dp)
             .background(Color.White)
     ){
-
         Row(
             modifier = Modifier.align(Alignment.CenterStart),
             verticalAlignment = Alignment.CenterVertically
         ){
-
             Icon(
                 painter = painterResource(
                     id = if (isSelected) R.drawable.ic_check_fill_24
                         else R.drawable.ic_check_default_24
                 ),
+                modifier = Modifier.noRippleClickable(onClick = onSelectClick),
                 contentDescription = null,
                 tint = Color.Unspecified,
             )
 
-            Spacer(modifier = Modifier.padding((3.dp)))
+            Spacer(modifier = Modifier.width(3.dp))
 
             Text(
                 text = "전체 선택",
                 style = KakaoTheme.typography.body3
             )
 
-            Spacer(modifier = Modifier.padding((3.dp)))
+            Spacer(modifier = Modifier.width(3.dp))
 
             Text(
                 text = "(${selectedFolder}/${totalFolder})",
@@ -71,7 +73,7 @@ fun FolderSelectionItem(
         }
 
         Button(
-            onClick = {},
+            onClick = onClearClick,
             modifier = Modifier
                 .align(Alignment.CenterEnd)
                 .width(69.dp)
@@ -103,21 +105,27 @@ private fun FolderSelectionItemPreview(){
     Column() {
         FolderSelectionItem(
             totalFolder = 9,
-            selectedFolder = 0
+            selectedFolder = 0,
+            onSelectClick = {},
+            onClearClick = {}
         )
 
-        Spacer(modifier = Modifier.padding(10.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         FolderSelectionItem(
             totalFolder = 9,
-            selectedFolder = 5
+            selectedFolder = 5,
+            onSelectClick = {},
+            onClearClick = {}
         )
 
-        Spacer(modifier = Modifier.padding(10.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         FolderSelectionItem(
             totalFolder = 9,
             selectedFolder = 9,
+            onSelectClick = {},
+            onClearClick = {},
             isSelected = true
         )
     }
