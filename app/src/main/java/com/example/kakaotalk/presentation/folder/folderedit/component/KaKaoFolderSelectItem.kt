@@ -1,7 +1,6 @@
 package com.example.kakaotalk.presentation.folder.folderedit.component
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -9,12 +8,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -41,7 +38,6 @@ fun FolderSelectionItem(
         modifier = modifier
             .fillMaxWidth()
             .height(30.dp)
-            .background(Color.White)
     ){
         Row(
             modifier = Modifier.align(Alignment.CenterStart),
@@ -72,19 +68,13 @@ fun FolderSelectionItem(
             )
         }
 
-        Button(
+        OutlinedButton(
             onClick = onClearClick,
             modifier = Modifier
                 .align(Alignment.CenterEnd)
                 .width(69.dp)
                 .height(30.dp)
                 .alpha(if (selectedFolder > 0) 1f else 0.5f),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = KakaoTheme.colors.white,
-                disabledContainerColor = KakaoTheme.colors.white,
-                contentColor = KakaoTheme.colors.white,
-                disabledContentColor = KakaoTheme.colors.white
-            ),
             shape = RoundedCornerShape(999.dp),
             border = BorderStroke(1.dp, KakaoTheme.colors.gray300),
             contentPadding = PaddingValues()
@@ -101,7 +91,7 @@ fun FolderSelectionItem(
 
 @Preview
 @Composable
-private fun FolderSelectionItemPreview(){
+private fun KaKaoFolderSelectionItemPreview(){
     Column() {
         FolderSelectionItem(
             totalFolder = 9,
