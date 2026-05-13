@@ -48,8 +48,7 @@ fun KakaoModal(
             contentAlignment = Alignment.Center,
         ){
             Column(
-                modifier =
-                    Modifier
+                modifier = Modifier
                         .fillMaxWidth()
                         .background(
                             color = KakaoTheme.colors.white,
