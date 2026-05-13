@@ -54,7 +54,7 @@ fun KakaoChatRoomProfile(
 
 @Preview
 @Composable
-private fun KakakoChatRoomProfile() {
+private fun KakaoChatRoomProfilePreview() {
     KakaoTheme {
         KakaoChatRoomProfile()
     }
