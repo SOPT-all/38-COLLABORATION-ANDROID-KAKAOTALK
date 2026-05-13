@@ -1,4 +1,4 @@
-package com.example.kakaotalk.core.designsystem.component.KakakoChatProfile
+package com.example.kakaotalk.core.designsystem.component.KakaoChatProfile
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
