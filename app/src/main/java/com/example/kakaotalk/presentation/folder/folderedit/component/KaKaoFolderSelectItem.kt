@@ -85,7 +85,6 @@ fun FolderSelectionItem(
                 style = KakaoTheme.typography.body4
             )
         }
-
     }
 }
 
