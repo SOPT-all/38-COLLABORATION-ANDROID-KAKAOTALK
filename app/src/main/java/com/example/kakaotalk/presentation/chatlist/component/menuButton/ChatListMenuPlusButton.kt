@@ -9,7 +9,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -20,19 +19,18 @@ import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 @Composable
 fun ChatListMenuPlusButton(
     modifier: Modifier = Modifier,
-    isSelected: Boolean = false,
     onSelected: () -> Unit = {},
 ) {
     Box(
         modifier = modifier
             .size(40.dp)
             .background(
-                color = if (isSelected) KakaoTheme.colors.black else KakaoTheme.colors.white,
+                color = KakaoTheme.colors.white,
                 shape = CircleShape
             )
             .border(
                 width = 1.dp,
-                color = if (isSelected) KakaoTheme.colors.black else KakaoTheme.colors.gray300,
+                color = KakaoTheme.colors.gray300,
                 shape = CircleShape
             )
             .noRippleClickable(onClick = onSelected),
@@ -41,7 +39,7 @@ fun ChatListMenuPlusButton(
         Icon(
             painter = painterResource(R.drawable.ic_foler_plus_24),
             contentDescription = "Chat List Menu Plus Button",
-            tint = Color.Unspecified
+            tint = KakaoTheme.colors.gray900
         )
     }
 }
