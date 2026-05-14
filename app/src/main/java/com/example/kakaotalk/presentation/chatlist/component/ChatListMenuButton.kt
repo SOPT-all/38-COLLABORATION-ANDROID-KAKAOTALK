@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -23,7 +24,7 @@ import com.example.kakaotalk.core.common.extension.noRippleClickable
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 
 sealed class MenuButtonType {
-    data class DefualtType(val text: String) : MenuButtonType()
+    data class DefaultType(val text: String) : MenuButtonType()
     data class NumOfReadType(val number: Int) : MenuButtonType()
     data object PlusMenuType : MenuButtonType()
 }
@@ -65,7 +66,7 @@ fun ChatListMenuButton(
         contentAlignment = Alignment.Center
     ) {
         when (type) {
-            is MenuButtonType.DefualtType -> {
+            is MenuButtonType.DefaultType -> {
                 Text(
                     text = type.text,
                     modifier = Modifier.padding(horizontal = 17.dp),
@@ -83,7 +84,7 @@ fun ChatListMenuButton(
                     Icon(
                         painter = painterResource(R.drawable.ic_no_read_24),
                         contentDescription = null,
-                        tint = null
+                        tint = Color.Unspecified
                     )
 
                     Text(
@@ -117,7 +118,7 @@ private fun ChatListMenuButtonPreview() {
     KakaoTheme {
         Row {
             ChatListMenuButton(
-                type = MenuButtonType.DefualtType("전체"),
+                type = MenuButtonType.DefaultType("전체"),
             )
 
             Spacer(modifier = Modifier.width(16.dp))
@@ -129,7 +130,7 @@ private fun ChatListMenuButtonPreview() {
             Spacer(modifier = Modifier.width(16.dp))
 
             ChatListMenuButton(
-                type = MenuButtonType.DefualtType("SOPT"),
+                type = MenuButtonType.DefaultType("SOPT"),
                 selected = true
             )
 
