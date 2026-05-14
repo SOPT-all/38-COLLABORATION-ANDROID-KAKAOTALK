@@ -28,7 +28,7 @@ sealed class MenuButtonType {
     data object GeneralType : MenuButtonType()
     data class DefaultType(
         @DrawableRes val icon: Int? = null,
-        val numOfNoread: Int
+        val numOfUnread: Int
     ) : MenuButtonType()
 }
 
@@ -85,7 +85,7 @@ fun ChatListMenuButton(
                     )
 
                     NumOfChat(
-                        number = buttonType.numOfNoread
+                        number = buttonType.numOfUnread
                     )
                 }
             }
@@ -115,7 +115,7 @@ private fun ChatListMenuButtonPreview() {
 
             ChatListMenuButton(
                 text = "히히즐겁당",
-                buttonType = MenuButtonType.DefaultType(numOfNoread = 3)
+                buttonType = MenuButtonType.DefaultType(numOfUnread = 3)
             )
 
             Spacer(modifier = Modifier.width(6.dp))
