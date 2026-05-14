@@ -23,7 +23,6 @@ private fun ChatListTopBar(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .height(33.dp)
             .background(color = KakaoTheme.colors.white),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
