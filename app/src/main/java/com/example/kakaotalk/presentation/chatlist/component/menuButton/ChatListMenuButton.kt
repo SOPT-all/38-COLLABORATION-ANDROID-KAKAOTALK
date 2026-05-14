@@ -35,8 +35,9 @@ sealed class MenuButtonType {
 @Composable
 fun ChatListMenuButton(
     text: String,
-    modifier: Modifier = Modifier,
     buttonType: MenuButtonType,
+\
+    modifier: Modifier = Modifier,
     isSelected: Boolean = false,
     onSelected: () -> Unit = {},
 ) {
