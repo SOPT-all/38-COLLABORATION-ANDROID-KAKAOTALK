@@ -40,17 +40,20 @@ private fun ChatListTopBar(
         ) {
             Icon(
                 painter = painterResource(R.drawable.ic_search_24),
-                contentDescription = null
+                contentDescription = null,
+                tint = KakaoTheme.colors.black
             )
 
             Icon(
                 painter = painterResource(R.drawable.ic_chat_plus_24),
-                contentDescription = null
+                contentDescription = null,
+                tint = KakaoTheme.colors.black
             )
 
             Icon(
                 painter = painterResource(R.drawable.ic_setting_24),
-                contentDescription = null
+                contentDescription = null,
+                tint = KakaoTheme.colors.black
             )
         }
     }
