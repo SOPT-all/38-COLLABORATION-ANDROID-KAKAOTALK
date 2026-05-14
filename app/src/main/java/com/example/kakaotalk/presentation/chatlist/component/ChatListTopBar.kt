@@ -40,17 +40,17 @@ private fun ChatListTopBar(
         ) {
             Icon(
                 painter = painterResource(R.drawable.ic_search_24),
-                contentDescription = "검색",
+                contentDescription = null
             )
 
             Icon(
                 painter = painterResource(R.drawable.ic_chat_plus_24),
-                contentDescription = "채팅방 만들기",
+                contentDescription = null
             )
 
             Icon(
                 painter = painterResource(R.drawable.ic_setting_24),
-                contentDescription = "세팅",
+                contentDescription = null
             )
         }
     }
