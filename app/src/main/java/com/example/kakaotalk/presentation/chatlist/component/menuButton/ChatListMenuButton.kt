@@ -36,7 +36,6 @@ sealed class MenuButtonType {
 fun ChatListMenuButton(
     text: String,
     buttonType: MenuButtonType,
-\
     modifier: Modifier = Modifier,
     isSelected: Boolean = false,
     onSelected: () -> Unit = {},
@@ -50,8 +49,7 @@ fun ChatListMenuButton(
             )
             .border(
                 width = 1.dp,
-                color = if (isSelected) KakaoTheme.colors.black else KakaoTheme.colors.gray300,
-                shape = CircleShape
+                color = if (isSelected) Color.Unspecified else KakaoTheme.colors.gray300,                shape = CircleShape
             )
             .noRippleClickable(onClick = onSelected),
         contentAlignment = Alignment.Center
