@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -13,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -22,14 +24,15 @@ import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 
 @Composable
 fun KakaoFolderHeader(
-    onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    showMore: Boolean = true
+    onClick: () -> Unit = {},
+    showMore: Boolean = true,
+    backgroundColor: Color = KakaoTheme.colors.white
 ){
     Row(
         modifier = modifier
-            .width(328.dp)
-            .height(18.dp),
+            .fillMaxWidth()
+            .background(backgroundColor),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ){
@@ -67,15 +70,11 @@ fun KakaoFolderHeader(
 private fun KakaoFolderHeaderPreview(){
     KakaoTheme{
         Column(){
-            KakaoFolderHeader(
-                modifier = Modifier.background(KakaoTheme.colors.white),
-                onClick = {}
-            )
+            KakaoFolderHeader()
 
             Spacer(modifier = Modifier.height(10.dp))
 
             KakaoFolderHeader(
-                modifier = Modifier.background(KakaoTheme.colors.white),
                 onClick = {},
                 showMore = false
             )

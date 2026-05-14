@@ -45,7 +45,7 @@ private fun KakaoDividerPreview(){
                 backgroundColor = KakaoTheme.colors.gray100
             )
 
-            Spacer(modifier = Modifier.height(5.dp))
+            Spacer(modifier = Modifier.height(10.dp))
 
             KakaoDivider(
                 dividerType = DividerType.Wide
