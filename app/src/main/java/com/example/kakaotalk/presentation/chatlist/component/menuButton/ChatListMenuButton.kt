@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
@@ -41,6 +42,7 @@ fun ChatListMenuButton(
 ) {
     Box(
         modifier = modifier
+            .height(40.dp)
             .background(
                 color = if (isSelected) KakaoTheme.colors.black else KakaoTheme.colors.white,
                 shape = CircleShape
@@ -54,7 +56,7 @@ fun ChatListMenuButton(
         contentAlignment = Alignment.Center
     ) {
         Row(
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+            modifier = Modifier.padding(horizontal = 16.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(4.dp)
         ) {
@@ -102,19 +104,23 @@ private fun ChatListMenuButtonPreview() {
                 buttonType = MenuButtonType.GeneralType,
             )
 
-            Spacer(modifier = Modifier.width(16.dp))
+            Spacer(modifier = Modifier.width(6.dp))
 
             ChatListMenuButton(
                 text = "안읽음",
                 buttonType = MenuButtonType.DefaultType(R.drawable.ic_no_read_24, 11)
             )
 
-            Spacer(modifier = Modifier.width(16.dp))
+            Spacer(modifier = Modifier.width(6.dp))
 
             ChatListMenuButton(
                 text = "히히즐겁당",
                 buttonType = MenuButtonType.DefaultType(numOfNoread = 3)
             )
+
+            Spacer(modifier = Modifier.width(6.dp))
+
+            ChatListMenuPlusButton()
         }
     }
 }
