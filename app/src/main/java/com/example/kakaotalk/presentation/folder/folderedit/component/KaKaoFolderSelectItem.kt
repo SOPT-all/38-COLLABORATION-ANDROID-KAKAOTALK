@@ -2,6 +2,7 @@ package com.example.kakaotalk.presentation.folder.folderedit.component
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -43,26 +44,22 @@ fun FolderSelectionItem(
     ){
         Row(
             modifier = Modifier.align(Alignment.CenterStart),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(3.dp)
         ){
             Icon(
                 painter = painterResource(
-                    id = if (isSelected) R.drawable.ic_check_fill_24
-                        else R.drawable.ic_check_default_24
+                    id = if (isSelected) R.drawable.ic_check_fill_24 else R.drawable.ic_check_default_24
                 ),
                 modifier = Modifier.noRippleClickable(onClick = onSelectClick),
                 contentDescription = null,
                 tint = Color.Unspecified,
             )
 
-            Spacer(modifier = Modifier.width(3.dp))
-
             Text(
                 text = "전체 선택",
                 style = KakaoTheme.typography.body3
             )
-
-            Spacer(modifier = Modifier.width(3.dp))
 
             Text(
                 text = "(${selectedFolder}/${totalFolder})",
