@@ -1,6 +1,7 @@
 package com.example.kakaotalk.presentation.folder.folderedit.component
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -32,12 +33,13 @@ fun FolderSelectionItem(
     onSelectClick: () -> Unit,
     onClearClick: () -> Unit,
     modifier: Modifier = Modifier,
-    isSelected: Boolean = false
+    isSelected: Boolean = false,
+    backgroundColor: Color = KakaoTheme.colors.white
 ) {
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .height(30.dp)
+            .background(backgroundColor)
     ){
         Row(
             modifier = Modifier.align(Alignment.CenterStart),
