@@ -17,6 +17,7 @@ data class KakaoTalkTypography(
     val body3: TextStyle,
     val body4: TextStyle,
     val body5: TextStyle,
+    val body6: TextStyle,
     val head1: TextStyle,
     val head2: TextStyle,
     val head3: TextStyle,
@@ -62,6 +63,13 @@ val defaultKakaoTalkTypography = KakaoTalkTypography(
         fontWeight = FontWeight.Medium,
         lineHeight = 16.5.sp,
         fontSize = 11.sp,
+        letterSpacing = 0.01.em
+    ),
+    body6 = TextStyle(
+        fontFamily = PretendardFontFamily,
+        fontWeight = FontWeight.Medium,
+        lineHeight = 12.sp,
+        fontSize = 8.sp,
         letterSpacing = 0.01.em
     ),
     head1 = TextStyle(
