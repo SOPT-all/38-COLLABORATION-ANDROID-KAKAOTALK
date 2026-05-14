@@ -1,4 +1,4 @@
-package com.example.kakaotalk.presentation.chatlist.component
+package com.example.kakaotalk.presentation.chatlist.component.menuButton
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -14,7 +14,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 
 @Composable
@@ -33,16 +32,16 @@ fun NumOfChat(
     ) {
         Text(
             text = "$number",
-            modifier = Modifier.padding(horizontal = 5.dp),
+            modifier = Modifier.padding(horizontal = 5.dp, vertical = 2.dp),
             color = KakaoTheme.colors.white,
-            style = KakaoTheme.typography.body4.copy(fontSize = 8.sp)
+            style = KakaoTheme.typography.body6
         )
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-private fun ChatListMenuButtonPreview() {
+private fun NumOfChatPreview() {
     KakaoTheme {
         Row() {
             NumOfChat(1)
