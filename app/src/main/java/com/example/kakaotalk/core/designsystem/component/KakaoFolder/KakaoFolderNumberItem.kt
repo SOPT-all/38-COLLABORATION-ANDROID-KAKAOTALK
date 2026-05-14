@@ -1,5 +1,6 @@
 package com.example.kakaotalk.core.designsystem.component.KakaoFolder
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -28,37 +29,19 @@ import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 fun KakaoFolderNumberItem(
     folderTitle: String,
     folderCount: Int,
-    icon: Int,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-    backgroundColor: Color = KakaoTheme.colors.white
+    @DrawableRes icon: Int,
+    onArrowClick: () -> Unit,
+    modifier: Modifier = Modifier
 ){
     Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .background(backgroundColor)
+        modifier = modifier.fillMaxWidth()
     ) {
         Row(
             modifier = Modifier.align(Alignment.CenterStart),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
-            Box(
-                modifier = Modifier
-                    .size(28.dp)
-                    .background(
-                        color = KakaoTheme.colors.gray200,
-                        shape = CircleShape
-                    ),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    painter = painterResource(id = icon),
-                    contentDescription = null,
-                    modifier = Modifier.size(20.dp),
-                    tint = Color.Unspecified
-                )
-            }
+            KakaoFolderIcon(icon = icon)
 
             Spacer(modifier = Modifier.width(8.dp))
 
@@ -71,7 +54,7 @@ fun KakaoFolderNumberItem(
         Row(
             modifier = Modifier
                 .align(Alignment.CenterEnd)
-                .noRippleClickable(onClick = onClick),
+                .noRippleClickable(onClick = onArrowClick),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
@@ -91,7 +74,7 @@ fun KakaoFolderNumberItem(
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun KakaoFolderNumberItemPreview(){
     KakaoTheme {
@@ -100,7 +83,7 @@ private fun KakaoFolderNumberItemPreview(){
                 folderTitle = "기계",
                 folderCount = 9,
                 icon = R.drawable.ic_folder_24,
-                onClick = {}
+                onArrowClick = {}
             )
 
             Spacer(modifier = Modifier.height(10.dp))
@@ -109,7 +92,7 @@ private fun KakaoFolderNumberItemPreview(){
                 folderTitle = "서울여자대학교",
                 folderCount = 12,
                 icon = R.drawable.ic_edit_pencil_24,
-                onClick = {}
+                onArrowClick = {}
             )
         }
     }

@@ -30,35 +30,21 @@ fun KakaoFolderAddItem(
     text: String,
     @DrawableRes icon: Int,
     modifier: Modifier = Modifier,
-    iconColor: Color = KakaoTheme.colors.black,
-    backgroundColor: Color = KakaoTheme.colors.white
+    iconColor: Color = Color.Unspecified
 ){
     Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .background(backgroundColor)
+        modifier = modifier.fillMaxWidth()
     ) {
         Row(
             modifier = Modifier.align(Alignment.CenterStart),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
-            Box(
-                modifier = Modifier
-                    .size(28.dp)
-                    .background(
-                        color = KakaoTheme.colors.gray200,
-                        shape = CircleShape
-                    ),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    painter = painterResource(id = icon),
-                    contentDescription = null,
-                    modifier = Modifier.size(20.dp),
-                    tint = iconColor
-                )
-            }
+
+            KakaoFolderIcon(
+                icon = icon,
+                iconColor = iconColor
+            )
 
             Spacer(modifier = Modifier.width(8.dp))
 
@@ -90,7 +76,7 @@ fun KakaoFolderAddItem(
 }
 
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun KakaoFolderAddItemPreview(){
     KakaoTheme{
