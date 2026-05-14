@@ -35,8 +35,7 @@ fun KakaoFolderNumberItem(
     ) {
         Row(
             modifier = Modifier.align(Alignment.CenterStart),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
+            verticalAlignment = Alignment.CenterVertically
         ) {
             KakaoFolderIcon(icon = icon)
 
