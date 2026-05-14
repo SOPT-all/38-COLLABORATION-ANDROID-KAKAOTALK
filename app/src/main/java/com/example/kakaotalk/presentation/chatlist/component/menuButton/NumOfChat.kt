@@ -31,7 +31,7 @@ fun NumOfChat(
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = "$number",
+            text = number.toString(),
             modifier = Modifier.padding(horizontal = 5.dp, vertical = 2.dp),
             color = KakaoTheme.colors.white,
             style = KakaoTheme.typography.body6
