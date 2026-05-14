@@ -1,4 +1,4 @@
-package com.example.kakaotalk.core.designsystem.component
+package com.example.kakaotalk.presentation.folder.folderhome.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -25,7 +25,7 @@ import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 fun KakaoFolderHeader(
     modifier: Modifier = Modifier,
     onMoreClick: () -> Unit = {},
-    showMore: Boolean = true,
+    isMoreVisible: Boolean = true,
     backgroundColor: Color = KakaoTheme.colors.white
 ){
     Row(
@@ -40,7 +40,7 @@ fun KakaoFolderHeader(
             style = KakaoTheme.typography.head4
         )
 
-        if (showMore) {
+        if (isMoreVisible) {
             Row(
                 modifier = Modifier.noRippleClickable(onClick = onMoreClick),
                 verticalAlignment = Alignment.CenterVertically,
@@ -48,7 +48,7 @@ fun KakaoFolderHeader(
             ) {
                 Text(
                     text = "더보기",
-                    style = KakaoTheme.typography.body5,
+                    style = KakaoTheme.typography.body6,
                     color = KakaoTheme.colors.gray500
                 )
 
@@ -75,7 +75,7 @@ private fun KakaoFolderHeaderPreview(){
 
             KakaoFolderHeader(
                 onMoreClick = {},
-                showMore = false
+                isMoreVisible = false
             )
         }
 
