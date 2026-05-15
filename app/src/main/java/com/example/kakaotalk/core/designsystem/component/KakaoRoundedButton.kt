@@ -37,7 +37,6 @@ fun KakaoRoundedButton(
                 enabled = isClickable,
                 onClick = onClick
             )
-            .alpha(if (isClickable) 1f else 0.5f)
             .padding(
                 horizontal = 12.dp,
                 vertical = 6.dp
@@ -46,7 +45,7 @@ fun KakaoRoundedButton(
         Text(
             text = text,
             style = KakaoTheme.typography.body4,
-            color = KakaoTheme.colors.black
+            color = if (isClickable) KakaoTheme.colors.black else KakaoTheme.colors.gray600
         )
     }
 }
