@@ -36,7 +36,7 @@ fun FolderSelectionItem(
         Row(
             modifier = Modifier.align(Alignment.CenterStart),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(3.dp)
+            horizontalArrangement = Arrangement.spacedBy(4.dp)
         ){
             Icon(
                 painter = painterResource(
