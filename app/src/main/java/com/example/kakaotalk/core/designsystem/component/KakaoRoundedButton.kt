@@ -15,6 +15,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.kakaotalk.core.common.extension.noRippleClickable
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 
 @Composable
@@ -32,7 +33,7 @@ fun KakaoRoundedButton(
                 color = KakaoTheme.colors.gray300,
                 shape = CircleShape
             )
-            .clickable(
+            .noRippleClickable(
                 enabled = isClickable,
                 onClick = onClick
             )
