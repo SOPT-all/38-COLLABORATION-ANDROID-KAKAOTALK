@@ -25,6 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 import com.example.kakaotalk.presentation.chatlist.component.ChatListBottomBar
+import com.example.kakaotalk.presentation.chatlist.component.ChatListItem
 import com.example.kakaotalk.presentation.chatlist.component.ChatListTopBar
 import com.example.kakaotalk.presentation.chatlist.component.menuButton.ChatListMenuButton
 import com.example.kakaotalk.presentation.chatlist.component.menuButton.ChatListMenuPlusButton
@@ -45,16 +46,17 @@ private fun ChatListScreen(
     var selectedCategoryId by remember { mutableStateOf("item_all") }
 
     val dummyList = listOf(
-        DummyFolder(id = "item_all", text = "전체", 0),
-        DummyFolder(id = "folder_1", text = "전체 아님ㅋ", 11),
-        DummyFolder(id = "folder_2", text = "전체 일수도?", 212)
+        DummyFolder(id = "item_all", text = "전체", number = 0),
+        DummyFolder(id = "folder_1", text = "전체 아님ㅋ", number = 11),
+        DummyFolder(id = "folder_2", text = "전체 일수도?", number = 212)
     )
 
     val dummyChatList = listOf(
-        DummyFolder(id = "item_all", text = "전체", 0),
-        DummyFolder(id = "folder_1", text = "전체 아님ㅋ", 11),
-        DummyFolder(id = "folder_2", text = "전체 일수도?", 212)
-    )
+        DummyItem(id = "item_1", chatTitle = "Android", 4, date= "어제", "아 그저께 두쫀쿠가 진짜 태풍을 일으켰는데 비가 진짜 엄청나게 쏟아지더라 근데 CU 우산이 생각보다 구리다는거", unreadCount = 11),
+        DummyItem(id = "item_2", chatTitle = "Sopt 전체", 5, date= "오늘", "민경님이랑 친해져야 하는데 교양수업 같이 듣는데 접점이없어요", unreadCount = 3),
+        DummyItem(id = "item_3", chatTitle = "하나", 2, date= "05/16", "자? 가위 풀 내일 준비물", unreadCount = 0),
+        DummyItem(id = "item_4", chatTitle = "둘", 4, date= "05/14", "한로로 축제공연 화이팅", unreadCount = 3),
+        )
 
     Box(
         modifier = modifier
@@ -81,7 +83,9 @@ private fun ChatListScreen(
                 ) { item ->
                     ChatListMenuButton(
                         text = item.text,
-                        numOfUnread = item.number
+                        numOfUnread = item.number,
+                        isSelected = selectedCategoryId == item.id,
+                        onClick = { selectedCategoryId = item.id }
                     )
                 }
 
@@ -102,26 +106,37 @@ private fun ChatListScreen(
                     items = dummyChatList,
                     key = { it.id }
                 ) { item ->
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(60.dp)
-                            .background(KakaoTheme.colors.gray200),
-                    ) {
-                        Text(
-                            text = item.text
-                        )
-                    }
+                    ChatListItem(
+                        chatTitle = item.chatTitle,
+                        memberCount = item.memberCount,
+                        date = item.date,
+                        chatMessage = item.chatMessage,
+                        unreadCount = item.unreadCount
+                    )
                 }
             }
         }
         ChatListBottomBar(
-            modifier = Modifier.align(Alignment.BottomCenter).background(KakaoTheme.colors.black)
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .background(KakaoTheme.colors.white)
         )
     }
 }
 
-data class DummyFolder(val id: String, val text: String, val number: Int)
+data class DummyFolder(
+    val id: String,
+    val text: String,
+    val number: Int
+)
+data class DummyItem(
+    val id: String,
+    val chatTitle: String,
+    val memberCount: Int,
+    val date: String,
+    val chatMessage: String,
+    val unreadCount: Int
+)
 
 @Preview(showBackground = true)
 @Composable
