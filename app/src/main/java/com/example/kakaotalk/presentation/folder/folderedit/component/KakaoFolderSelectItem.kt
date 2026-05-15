@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,7 +24,7 @@ import com.example.kakaotalk.core.designsystem.component.KakaoRoundedButton
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 
 @Composable
-fun FolderSelectionItem(
+fun KakaoFolderSelectItem(
     totalFolder: Int,
     selectedFolder: Int,
     onSelectClick: () -> Unit,
@@ -30,18 +32,16 @@ fun FolderSelectionItem(
     modifier: Modifier = Modifier,
     isSelected: Boolean = false
 ) {
-    Box(
-        modifier = modifier.fillMaxWidth()
+    Row(
+        modifier = modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
     ){
         Row(
-            modifier = Modifier.align(Alignment.CenterStart),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(4.dp)
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            verticalAlignment = Alignment.CenterVertically
         ){
             Icon(
-                painter = painterResource(
-                    id = if (isSelected) R.drawable.ic_check_fill_24 else R.drawable.ic_check_default_24
-                ),
+                painter = painterResource(id = if (isSelected) R.drawable.ic_check_fill_24 else R.drawable.ic_check_default_24),
                 modifier = Modifier.noRippleClickable(onClick = onSelectClick),
                 contentDescription = null,
                 tint = Color.Unspecified,
@@ -49,29 +49,32 @@ fun FolderSelectionItem(
 
             Text(
                 text = "전체 선택",
-                style = KakaoTheme.typography.body3
+                style = KakaoTheme.typography.body3,
+                color = KakaoTheme.colors.gray900
             )
 
             Text(
                 text = "(${selectedFolder}/${totalFolder})",
-                style = KakaoTheme.typography.body3
+                style = KakaoTheme.typography.body3,
+                color = KakaoTheme.colors.gray900
             )
         }
 
+        Spacer(modifier = Modifier.weight(1f))
+
         KakaoRoundedButton(
             text = "선택 해제",
-            modifier = Modifier.align(Alignment.CenterEnd),
             onClick = onClearClick,
             isClickable = selectedFolder > 0
         )
     }
 }
 
-@Preview
+@Preview (showBackground = true)
 @Composable
-private fun KaKaoFolderSelectionItemPreview(){
+private fun KaKaoKakaoFolderSelectItemPreview(){
     Column() {
-        FolderSelectionItem(
+        KakaoFolderSelectItem(
             totalFolder = 9,
             selectedFolder = 0,
             onSelectClick = {},
@@ -80,7 +83,7 @@ private fun KaKaoFolderSelectionItemPreview(){
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        FolderSelectionItem(
+        KakaoFolderSelectItem(
             totalFolder = 9,
             selectedFolder = 5,
             onSelectClick = {},
@@ -89,7 +92,7 @@ private fun KaKaoFolderSelectionItemPreview(){
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        FolderSelectionItem(
+        KakaoFolderSelectItem(
             totalFolder = 9,
             selectedFolder = 9,
             onSelectClick = {},
