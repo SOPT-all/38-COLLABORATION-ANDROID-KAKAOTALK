@@ -51,9 +51,8 @@ fun KakaoFolderNumberItem(
             modifier = Modifier
                 .align(Alignment.CenterEnd)
                 .noRippleClickable(onClick = onArrowClick),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
-        ) {
+            verticalAlignment = Alignment.CenterVertically
+            ) {
             Text(
                 text = folderCount.toString(),
                 style = KakaoTheme.typography.head3,
