@@ -17,7 +17,7 @@ import com.example.kakaotalk.R
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 
 @Composable
-private fun ChatListTopBar(
+fun ChatListTopBar(
     modifier: Modifier = Modifier
 ) {
     Row(
