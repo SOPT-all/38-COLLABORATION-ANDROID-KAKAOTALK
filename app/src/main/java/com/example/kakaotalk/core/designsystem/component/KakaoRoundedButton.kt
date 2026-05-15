@@ -21,7 +21,7 @@ import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 fun KakaoRoundedButton(
     text: String,
     modifier: Modifier = Modifier,
-    onButtonClick: () -> Unit = {},
+    onClick: () -> Unit = {},
     isClickable: Boolean = true
 ){
     Box(
@@ -34,7 +34,7 @@ fun KakaoRoundedButton(
             )
             .clickable(
                 enabled = isClickable,
-                onClick = onButtonClick
+                onClick = onClick
             )
             .alpha(if (isClickable) 1f else 0.5f)
             .padding(
