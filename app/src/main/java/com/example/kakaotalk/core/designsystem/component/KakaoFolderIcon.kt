@@ -1,4 +1,4 @@
-package com.example.kakaotalk.core.designsystem.component.kakaofolder
+package com.example.kakaotalk.core.designsystem.component
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
