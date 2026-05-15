@@ -24,14 +24,21 @@ import com.example.kakaotalk.R
 import com.example.kakaotalk.core.common.extension.noRippleClickable
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 
+sealed class MenuButtonType {
+    data object GeneralType : MenuButtonType()
+    data class DefaultType(
+        @DrawableRes val icon: Int? = null,
+        val numOfUnread: Int
+    ) : MenuButtonType()
+}
+
 @Composable
 fun ChatListMenuButton(
     text: String,
+    buttonType: MenuButtonType,
     modifier: Modifier = Modifier,
-    @DrawableRes icon: Int? = null,
-    numOfUnread: Int = 0,
     isSelected: Boolean = false,
-    onClick: () -> Unit = {},
+    onSelected: () -> Unit = {},
 ) {
     Box(
         modifier = modifier
@@ -42,10 +49,9 @@ fun ChatListMenuButton(
             )
             .border(
                 width = 1.dp,
-                color = if (isSelected) Color.Unspecified else KakaoTheme.colors.gray300,
-                shape = CircleShape
+                color = if (isSelected) Color.Unspecified else KakaoTheme.colors.gray300,                shape = CircleShape
             )
-            .noRippleClickable(onClick = onClick),
+            .noRippleClickable(onClick = onSelected),
         contentAlignment = Alignment.Center
     ) {
         Row(
@@ -53,26 +59,35 @@ fun ChatListMenuButton(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            if (icon != null) {
-                Icon(
-                    painter = painterResource(icon),
-                    contentDescription = null,
-                    tint = Color.Unspecified
-                )
+            when (buttonType) {
+                is MenuButtonType.GeneralType -> {
+                    Text(
+                        text = text,
+                        color = if (isSelected) KakaoTheme.colors.white else KakaoTheme.colors.black,
+                        style = KakaoTheme.typography.head2
+                    )
+                }
+
+                is MenuButtonType.DefaultType -> {
+                    buttonType.icon?.let {
+                        Icon(
+                            painter = painterResource(buttonType.icon),
+                            contentDescription = null,
+                            tint = Color.Unspecified
+                        )
+                    }
+
+                    Text(
+                        text = text,
+                        color = if (isSelected) KakaoTheme.colors.white else KakaoTheme.colors.black,
+                        style = KakaoTheme.typography.head2
+                    )
+
+                    NumOfChat(
+                        number = buttonType.numOfUnread
+                    )
+                }
             }
-
-            Text(
-                text = text,
-                color = if (isSelected) KakaoTheme.colors.white else KakaoTheme.colors.black,
-                style = KakaoTheme.typography.head2
-            )
-
-            if(numOfUnread > 0) { //혹시 들어올 수도있는 음수의 경우도 고려해서 처리했습니다
-                NumOfChat(
-                    number = numOfUnread
-                )
-            }
-
         }
     }
 }
@@ -83,22 +98,22 @@ private fun ChatListMenuButtonPreview() {
     KakaoTheme {
         Row {
             ChatListMenuButton(
-                text = "전체"
+                text = "전체",
+                buttonType = MenuButtonType.GeneralType,
             )
 
             Spacer(modifier = Modifier.width(6.dp))
 
             ChatListMenuButton(
                 text = "안읽음",
-                icon = R.drawable.ic_no_read_24,
-                numOfUnread = 11
+                buttonType = MenuButtonType.DefaultType(R.drawable.ic_no_read_24, 11)
             )
 
             Spacer(modifier = Modifier.width(6.dp))
 
             ChatListMenuButton(
                 text = "히히즐겁당",
-                numOfUnread = 3
+                buttonType = MenuButtonType.DefaultType(numOfUnread = 3)
             )
 
             Spacer(modifier = Modifier.width(6.dp))
