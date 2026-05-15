@@ -11,6 +11,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.kakaotalk.R
+import com.example.kakaotalk.core.common.extension.noRippleClickable
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 
 @Composable
@@ -38,7 +39,7 @@ fun ChatListBottomBar(
             painter = painterResource(R.drawable.ic_chat_24),
             contentDescription = null,
             tint = KakaoTheme.colors.gray900,
-            modifier = Modifier.clickable(onClick = onChatClick)
+            modifier = Modifier.noRippleClickable(onClick = onChatClick)
         )
 
         Icon(
