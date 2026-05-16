@@ -1,5 +1,6 @@
 package com.example.kakaotalk.presentation.folder.folderedit.component
 
+import android.R.attr.onClick
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -26,11 +27,12 @@ import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 @Composable
 fun FolderEditIcon(
     onClick: () -> Unit,
+    modifier: Modifier = Modifier,
     isSelected: Boolean = false,
     @DrawableRes icon: Int = R.drawable.ic_edit_chunsik_24
 ){
     Box(
-        modifier = Modifier
+        modifier = modifier
             .size(45.dp)
             .clip(shape = CircleShape)
             .let { if (isSelected) it.border(2.dp, KakaoTheme.colors.gray800, CircleShape) else it }
