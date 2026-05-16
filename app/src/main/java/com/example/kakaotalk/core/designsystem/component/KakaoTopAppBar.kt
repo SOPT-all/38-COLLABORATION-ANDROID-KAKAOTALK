@@ -1,5 +1,6 @@
 package com.example.kakaotalk.core.designsystem.component
 
+import android.R.attr.text
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -26,8 +27,8 @@ fun KakaoTopAppBar(
     onBackClick: () -> Unit,
     modifier: Modifier = Modifier,
     onCompleteClick: () -> Unit = {},
-    completeTextColor: Color = KakaoTheme.colors.black,
-    showCompleteAction: Boolean = false
+    showCompleteAction: Boolean = false,
+    onChangeComplete: Boolean = false
 ){
     Box(
         modifier = modifier.fillMaxWidth()
@@ -59,7 +60,7 @@ fun KakaoTopAppBar(
                     .align(Alignment.CenterEnd)
                     .noRippleClickable(onClick = onCompleteClick),
                 style = KakaoTheme.typography.body2,
-                color = completeTextColor
+                color = if(onChangeComplete) KakaoTheme.colors.black else KakaoTheme.colors.gray500
             )
         }
     }
