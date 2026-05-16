@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.example.kakaotalk.R
 import com.example.kakaotalk.core.common.extension.noRippleClickable
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
+
 @Composable
 fun KakaoFolderItem(
     text: String,
@@ -27,29 +28,24 @@ fun KakaoFolderItem(
     modifier: Modifier = Modifier,
     iconColor: Color = Color.Unspecified,
     folderCount: Int = 0,
-    onArrowClick: () -> Unit,
+    onArrowClick: () -> Unit = {},
     isNumVisible: Boolean = false
 ){
     Row (
         modifier = modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically
-        ) {
+        KakaoFolderIcon(
+            icon = icon,
+            iconColor = iconColor
+        )
 
-            KakaoFolderIcon(
-                icon = icon,
-                iconColor = iconColor
-            )
+        Spacer(modifier = Modifier.width(8.dp))
 
-            Spacer(modifier = Modifier.width(8.dp))
-
-            Text(
-                text = text,
-                style = KakaoTheme.typography.body1
-            )
-        }
+        Text(
+            text = text,
+            style = KakaoTheme.typography.body1
+        )
 
         Spacer(modifier = Modifier.weight(1f))
 
