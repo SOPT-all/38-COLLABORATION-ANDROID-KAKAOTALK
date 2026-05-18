@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -14,8 +13,10 @@ import androidx.compose.ui.unit.dp
 import com.example.kakaotalk.R
 import com.example.kakaotalk.core.designsystem.component.KakaoFolderItem
 import com.example.kakaotalk.core.designsystem.component.KakaoTopAppBar
+import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 import com.example.kakaotalk.presentation.folder.folderhome.DummyFolder
 import com.example.kakaotalk.presentation.folder.folderhome.component.KakaoFolderHeader
+
 
 @Composable
 fun FolderEditRoute(
