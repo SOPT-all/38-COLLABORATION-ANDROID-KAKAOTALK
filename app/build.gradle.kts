@@ -13,7 +13,7 @@ val properties =
     }
 
 android {
-    namespace = "com.example.letssopt"
+    namespace = "com.example.kakaotalk"
     compileSdk {
         version = release(36)
     }
