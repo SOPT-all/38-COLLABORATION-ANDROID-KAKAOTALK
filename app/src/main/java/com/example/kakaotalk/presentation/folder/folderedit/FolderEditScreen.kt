@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -35,25 +36,21 @@ private fun FolderEditScreen(
 ) {
     val dummyFolderList = listOf(
         DummyFolder(
-            title = "기계",
-            icon = R.drawable.ic_folder_24,
-            iconColor = Color.Unspecified,
-            folderCount = 9,
-            onArrowClick = {}
+            title = "ChatGPT",
+            icon = R.drawable.ic_gpt_24
+        ),
+        DummyFolder(
+            title = "즐겨찾기",
+            icon = R.drawable.ic_star_24,
+            iconColor = KakaoTheme.colors.orange200
         ),
         DummyFolder(
             title = "서울여자대학교",
-            icon = R.drawable.ic_edit_pencil_24,
-            iconColor = Color.Unspecified,
-            folderCount = 11,
-            onArrowClick = {}
+            icon = R.drawable.ic_edit_pencil_24
         ),
         DummyFolder(
             title = "SOPT",
-            icon = R.drawable.ic_edit_bag_24,
-            iconColor = Color.Unspecified,
-            folderCount = 3,
-            onArrowClick = {}
+            icon = R.drawable.ic_edit_bag_24
         )
     )
 
@@ -62,7 +59,7 @@ private fun FolderEditScreen(
             start = 16.dp,
             end = 16.dp
         ),
-        verticalArrangement = Arrangement.spacedBy(26.dp)
+
     ) {
         KakaoTopAppBar(
             modifier = Modifier.padding(top = 41.dp),
@@ -71,17 +68,33 @@ private fun FolderEditScreen(
         )
 
         KakaoFolderHeader(
-            modifier = Modifier.padding(top = 24.dp),
+            modifier = Modifier.padding(
+                top = 24.dp,
+                bottom = 24.dp
+            ),
             isMoreVisible = false
         )
 
-        dummyFolderList.forEachIndexed { index, folder ->
-            KakaoFolderItem(
-                text = folder.title,
-                icon = folder.icon,
-                iconColor = folder.iconColor,
-                onArrowClick = folder.onArrowClick
-            )
+        Column(
+            modifier = Modifier,
+            verticalArrangement = Arrangement.spacedBy(13.dp)
+        ){
+            dummyFolderList.forEachIndexed { index, folder ->
+                KakaoFolderItem(
+                    text = folder.title,
+                    icon = folder.icon,
+                    iconColor = folder.iconColor,
+                    onArrowClick = folder.onArrowClick
+                )
+
+                if (index != dummyFolderList.lastIndex) {
+                    HorizontalDivider(
+                        modifier = Modifier,
+                        thickness = 1.dp,
+                        color = KakaoTheme.colors.gray200
+                    )
+                }
+            }
         }
     }
 }
