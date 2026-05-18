@@ -37,13 +37,15 @@ fun ChatListRoute(
     modifier: Modifier = Modifier
 ) {
     ChatListScreen(
-        modifier = modifier
+        modifier = modifier,
+        onFolderPlusClick = TODO()
     )
 }
 
 @Composable
 private fun ChatListScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onFolderPlusClick: () -> Unit
 ) {
     var selectedCategoryId by remember { mutableStateOf("item_all") }
 
@@ -120,7 +122,9 @@ private fun ChatListScreen(
                 }
 
                 item {
-                    ChatListMenuPlusButton()
+                    ChatListMenuPlusButton(
+                        onSelected = { onFolderPlusClick() }
+                    )
                 }
             }
 
@@ -183,6 +187,8 @@ data class DummyItem(
 @Composable
 private fun ChatListPreview() {
     KakaoTheme {
-        ChatListScreen()
+        ChatListScreen(
+            onFolderPlusClick = TODO()
+        )
     }
 }
