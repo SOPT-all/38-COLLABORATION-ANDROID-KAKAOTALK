@@ -1,5 +1,6 @@
 package com.example.kakaotalk.presentation.chatlist
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -19,8 +20,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.kakaotalk.R
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 import com.example.kakaotalk.presentation.chatlist.component.ChatListBottomBar
 import com.example.kakaotalk.presentation.chatlist.component.ChatListItem
@@ -50,11 +54,39 @@ private fun ChatListScreen(
     )
 
     val dummyChatList = listOf(
-        DummyItem(id = "item_1", chatTitle = "Android", 4, date= "어제", "아 그저께 두쫀쿠가 진짜 태풍을 일으켰는데 비가 진짜 엄청나게 쏟아지더라 근데 CU 우산이 생각보다 구리다는거", unreadCount = 11),
-        DummyItem(id = "item_2", chatTitle = "Sopt 전체", 5, date= "오늘", "민경님이랑 친해져야 하는데 교양수업 같이 듣는데 접점이없어요", unreadCount = 3),
-        DummyItem(id = "item_3", chatTitle = "하나", 2, date= "05/16", "자? 가위 풀 내일 준비물", unreadCount = 0),
-        DummyItem(id = "item_4", chatTitle = "둘", 4, date= "05/14", "한로로 축제공연 화이팅", unreadCount = 3),
-        )
+        DummyItem(
+            id = "item_1",
+            chatTitle = "Android",
+            4,
+            date = "어제",
+            "아 그저께 두쫀쿠가 진짜 태풍을 일으켰는데 비가 진짜 엄청나게 쏟아지더라 근데 CU 우산이 생각보다 구리다는거",
+            unreadCount = 11
+        ),
+        DummyItem(
+            id = "item_2",
+            chatTitle = "Sopt 전체",
+            5,
+            date = "오늘",
+            "민경님이랑 친해져야 하는데 교양수업 같이 듣는데 접점이없어요",
+            unreadCount = 3
+        ),
+        DummyItem(
+            id = "item_3",
+            chatTitle = "하나",
+            2,
+            date = "05/16",
+            "자? 가위 풀 내일 준비물",
+            unreadCount = 0
+        ),
+        DummyItem(
+            id = "item_4",
+            chatTitle = "둘",
+            4,
+            date = "05/14",
+            "한로로 축제공연 화이팅",
+            unreadCount = 3
+        ),
+    )
 
     Box(
         modifier = modifier
@@ -94,6 +126,15 @@ private fun ChatListScreen(
 
             Spacer(modifier = Modifier.height(22.dp))
 
+            Image(
+                painter = painterResource(R.drawable.img_chatlist_banner),
+                contentDescription = null,
+                modifier = Modifier.fillMaxWidth(),
+                contentScale = ContentScale.FillWidth
+            )
+
+            Spacer(modifier = Modifier.height(15.dp))
+
             LazyColumn(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -114,6 +155,7 @@ private fun ChatListScreen(
                 }
             }
         }
+
         ChatListBottomBar(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
@@ -127,6 +169,7 @@ data class DummyFolder(
     val text: String,
     val number: Int
 )
+
 data class DummyItem(
     val id: String,
     val chatTitle: String,
