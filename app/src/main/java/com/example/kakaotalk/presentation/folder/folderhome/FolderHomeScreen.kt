@@ -40,12 +40,10 @@ private fun FolderHomeScreen(
         .background(KakaoTheme.colors.white)
         .fillMaxSize()
 ) {
-
     val dummyFolderList = listOf(
         DummyFolder(
             title = "기계",
             icon = R.drawable.ic_folder_24,
-            iconColor = Color.Unspecified,
             folderCount = 9,
             onArrowClick = {}
         ),
@@ -53,7 +51,6 @@ private fun FolderHomeScreen(
         DummyFolder(
             title = "서울여자대학교",
             icon = R.drawable.ic_edit_pencil_24,
-            iconColor = Color.Unspecified,
             folderCount = 11,
             onArrowClick = {}
         ),
@@ -61,7 +58,6 @@ private fun FolderHomeScreen(
         DummyFolder(
             title = "SOPT",
             icon = R.drawable.ic_edit_bag_24,
-            iconColor = Color.Unspecified,
             folderCount = 3,
             onArrowClick = {}
         )
@@ -80,13 +76,13 @@ private fun FolderHomeScreen(
             KakaoTopAppBar(
                 modifier = Modifier.padding(top = 41.dp),
                 text = "채팅방 폴더 관리",
-                onBackClick = {},               // onClick
+                onBackClick = {},               // onClick!!!!
 
             )
 
             KakaoFolderHeader(
                 modifier = Modifier.padding(top = 24.dp),
-                onMoreClick = {}                // onclick
+                onMoreClick = {}                // onclick!!!!
             )
 
             Column(
@@ -156,9 +152,9 @@ private fun FolderHomeScreen(
 data class DummyFolder(
     val title: String,
     val icon: Int,
-    val iconColor: Color,
-    val folderCount: Int,
-    val onArrowClick: () -> Unit
+    val iconColor: Color = Color.Unspecified,
+    val folderCount: Int = 0,
+    val onArrowClick: () -> Unit = {}
 )
 
 @Preview(showBackground = true)
