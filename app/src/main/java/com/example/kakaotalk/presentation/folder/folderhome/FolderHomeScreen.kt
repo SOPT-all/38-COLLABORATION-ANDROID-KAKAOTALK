@@ -46,21 +46,24 @@ private fun FolderHomeScreen(
             title = "기계",
             icon = R.drawable.ic_folder_24,
             iconColor = Color.Unspecified,
-            folderCount = 9
+            folderCount = 9,
+            onArrowClick = {}
         ),
 
         DummyFolder(
             title = "서울여자대학교",
             icon = R.drawable.ic_edit_pencil_24,
             iconColor = Color.Unspecified,
-            folderCount = 11
+            folderCount = 11,
+            onArrowClick = {}
         ),
 
         DummyFolder(
             title = "SOPT",
             icon = R.drawable.ic_edit_bag_24,
             iconColor = Color.Unspecified,
-            folderCount = 3
+            folderCount = 3,
+            onArrowClick = {}
         )
     )
 
@@ -78,7 +81,6 @@ private fun FolderHomeScreen(
                 modifier = Modifier.padding(top = 41.dp),
                 text = "채팅방 폴더 관리",
                 onBackClick = {},               // onClick
-                onCompleteClick = {},           // onClick
 
             )
 
@@ -113,10 +115,7 @@ private fun FolderHomeScreen(
         HorizontalDivider(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(
-                    vertical = 24.dp,
-//                    horizontal = (-24).dp
-                ),
+                .padding(vertical = 24.dp),
             thickness = 1.dp,
             color = KakaoTheme.colors.gray200
         )
@@ -137,7 +136,8 @@ private fun FolderHomeScreen(
                         icon = folder.icon,
                         iconColor = folder.iconColor,
                         isNumVisible = true,
-                        folderCount = folder.folderCount
+                        folderCount = folder.folderCount,
+                        onArrowClick = folder.onArrowClick
                     )
                 }
             }
@@ -157,7 +157,8 @@ data class DummyFolder(
     val title: String,
     val icon: Int,
     val iconColor: Color,
-    val folderCount: Int
+    val folderCount: Int,
+    val onArrowClick: () -> Unit
 )
 
 @Preview(showBackground = true)
