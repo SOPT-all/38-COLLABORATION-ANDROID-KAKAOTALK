@@ -26,7 +26,6 @@ fun KakaoTopAppBar(
     text: String,
     onBackClick: () -> Unit,
     modifier: Modifier = Modifier,
-    onCompleteClick: () -> Unit = {},
     showCompleteAction: Boolean = false,
     onChangeComplete: Boolean = false
 ){
@@ -57,8 +56,7 @@ fun KakaoTopAppBar(
             Text(
                 text = "완료",
                 modifier = Modifier
-                    .align(Alignment.CenterEnd)
-                    .noRippleClickable(onClick = onCompleteClick),
+                    .align(Alignment.CenterEnd),
                 style = KakaoTheme.typography.body2,
                 color = if(onChangeComplete) KakaoTheme.colors.black else KakaoTheme.colors.gray500
             )
@@ -81,7 +79,6 @@ private fun KakaoTopAppBarPreview(){
             KakaoTopAppBar(
                 text = "폴더 편집",
                 onBackClick = {},
-                onCompleteClick = {},
                 showCompleteAction = true
             )
         }
