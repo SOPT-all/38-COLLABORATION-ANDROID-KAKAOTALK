@@ -3,6 +3,7 @@ package com.example.kakaotalk.presentation.chatlist.component
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
@@ -21,13 +22,12 @@ fun ChatListBottomBar(
 ){
     Row(
         modifier = modifier
+            .fillMaxWidth()
             .padding(
                 top = 15.dp,
-                bottom = 61.dp,
-                start = 32.dp,
-                end = 32.dp
+                bottom = 61.dp
             ),
-        horizontalArrangement = Arrangement.spacedBy(44.dp)
+        horizontalArrangement = Arrangement.SpaceEvenly
     ) {
         Icon(
             painter = painterResource(R.drawable.ic_profile_24),
