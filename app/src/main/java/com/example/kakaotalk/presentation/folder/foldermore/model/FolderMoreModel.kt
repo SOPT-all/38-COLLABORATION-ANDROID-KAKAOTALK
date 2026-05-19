@@ -15,7 +15,7 @@ val folderMoreList = listOf(
         title = "ChatGPT",
     ),
     FolderMoreModel(
-        icon = R.drawable.ic_star_24,
+        icon = R.drawable.ic_colored_star_24,
         title = "즐겨찾기",
     ),
     FolderMoreModel(
