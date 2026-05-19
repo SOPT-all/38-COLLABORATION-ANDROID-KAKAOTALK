@@ -56,7 +56,7 @@ private fun ChatListScreen(
     )
 
     val dummyChatList = listOf(
-        DummyItem(
+        ChatListItemModel(
             id = "item_1",
             chatTitle = "Android",
             4,
@@ -64,7 +64,7 @@ private fun ChatListScreen(
             "아 그저께 두쫀쿠가 진짜 태풍을 일으켰는데 비가 진짜 엄청나게 쏟아지더라 근데 CU 우산이 생각보다 구리다는거",
             unreadCount = 11
         ),
-        DummyItem(
+        ChatListItemModel(
             id = "item_2",
             chatTitle = "Sopt 전체",
             5,
@@ -72,7 +72,7 @@ private fun ChatListScreen(
             "민경님이랑 친해져야 하는데 교양수업 같이 듣는데 접점이없어요",
             unreadCount = 3
         ),
-        DummyItem(
+        ChatListItemModel(
             id = "item_3",
             chatTitle = "하나",
             2,
@@ -80,7 +80,7 @@ private fun ChatListScreen(
             "자? 가위 풀 내일 준비물",
             unreadCount = 0
         ),
-        DummyItem(
+        ChatListItemModel(
             id = "item_4",
             chatTitle = "둘",
             4,
@@ -174,7 +174,7 @@ data class DummyFolder(
     val number: Int
 )
 
-data class DummyItem(
+data class ChatListItemModel(
     val id: String,
     val chatTitle: String,
     val memberCount: Int,
