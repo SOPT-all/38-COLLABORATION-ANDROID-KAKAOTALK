@@ -18,6 +18,7 @@ import com.example.kakaotalk.core.designsystem.component.KakaoFolderItem
 import com.example.kakaotalk.core.designsystem.component.KakaoTopAppBar
 import com.example.kakaotalk.presentation.folder.folderhome.component.KakaoFolderHeader
 import com.example.kakaotalk.presentation.folder.folderhome.model.folderHomeList
+import com.example.kakaotalk.presentation.folder.folderhome.model.folderHomeNumberList
 
 @Composable
 fun FolderHomeRoute(
@@ -94,13 +95,15 @@ private fun FolderHomeScreen(
             modifier = Modifier.padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(24.dp),
         ){
-            KakaoFolderItem(
-                text = "기계",
-                icon = R.drawable.ic_folder_24,
-                isNumVisible = true,
-                folderCount = 9,
-                onArrowClick = onArrowClick,
-            )
+            folderHomeNumberList.forEach { folder ->
+                KakaoFolderItem(
+                    text = folder.title,
+                    icon = folder.icon,
+                    isNumVisible = true,
+                    folderCount = folder.folderCount,
+                    onArrowClick = onArrowClick,
+                )
+            }
 
             KakaoButton(
                 text = "폴더 만들기",
