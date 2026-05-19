@@ -14,7 +14,6 @@ import com.example.kakaotalk.R
 import com.example.kakaotalk.core.designsystem.component.KakaoFolderItem
 import com.example.kakaotalk.core.designsystem.component.KakaoTopAppBar
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
-import com.example.kakaotalk.presentation.folder.folderhome.DummyFolder
 import com.example.kakaotalk.presentation.folder.folderhome.component.KakaoFolderHeader
 
 
@@ -30,70 +29,66 @@ fun FolderMoreRoute(
 @Composable
 private fun FolderMoreScreen(
     modifier: Modifier = Modifier
-        .background(KakaoTheme.colors.white)
-        .fillMaxSize()
 ) {
-    val dummyFolderList = listOf(
-        DummyFolder(
-            title = "ChatGPT",
-            icon = R.drawable.ic_gpt_24
-        ),
-        DummyFolder(
-            title = "즐겨찾기",
-            icon = R.drawable.ic_star_24,
-            iconColor = KakaoTheme.colors.orange200
-        ),
-        DummyFolder(
-            title = "서울여자대학교",
-            icon = R.drawable.ic_edit_pencil_24
-        ),
-        DummyFolder(
-            title = "SOPT",
-            icon = R.drawable.ic_edit_bag_24
-        )
-    )
-
     Column(
-        modifier = modifier.padding(
-            start = 16.dp,
-            end = 16.dp
-        ),
-
-        ) {
+        modifier = modifier
+            .background(KakaoTheme.colors.white)
+            .fillMaxSize()
+            .padding(horizontal = 16.dp)
+            .padding(top = 41.dp),
+        verticalArrangement = Arrangement.spacedBy(24.dp),
+    ) {
         KakaoTopAppBar(
-            modifier = Modifier.padding(top = 41.dp),
+            modifier = Modifier,
             text = "채팅방 폴더 관리",
-            onBackClick = {}
+            onBackClick = {},
         )
 
         KakaoFolderHeader(
-            modifier = Modifier.padding(
-                top = 24.dp,
-                bottom = 24.dp
-            ),
-            isMoreVisible = false
+            modifier = Modifier,
+            isMoreVisible = false,
         )
 
         Column(
             modifier = Modifier,
-            verticalArrangement = Arrangement.spacedBy(13.dp)
+            verticalArrangement = Arrangement.spacedBy(13.dp),
         ){
-            dummyFolderList.forEachIndexed { index, folder ->
-                KakaoFolderItem(
-                    text = folder.title,
-                    icon = folder.icon,
-                    iconColor = folder.iconColor,
-                    onArrowClick = folder.onArrowClick
-                )
+            KakaoFolderItem(
+                text = "ChatGPT",
+                icon = R.drawable.ic_gpt_24,
+            )
 
-                if (index != dummyFolderList.lastIndex) {
-                    HorizontalDivider(
-                        modifier = Modifier,
-                        thickness = 1.dp,
-                        color = KakaoTheme.colors.gray200
-                    )
-                }
-            }
+            HorizontalDivider(
+                modifier = Modifier,
+                thickness = 1.dp,
+                color = KakaoTheme.colors.gray100,
+            )
+
+            KakaoFolderItem(
+                text = "즐겨찾기",
+                icon = R.drawable.ic_star_24,
+                iconColor = KakaoTheme.colors.orange200,
+            )
+
+            HorizontalDivider(
+                modifier = Modifier,
+                thickness = 1.dp,
+                color = KakaoTheme.colors.gray100,            )
+
+            KakaoFolderItem(
+                text = "서울여자대학교",
+                icon = R.drawable.ic_edit_pencil_24,
+            )
+
+            HorizontalDivider(
+                modifier = Modifier,
+                thickness = 1.dp,
+                color = KakaoTheme.colors.gray100,            )
+
+            KakaoFolderItem(
+                text = "SOPT",
+                icon = R.drawable.ic_edit_bag_24,
+            )
         }
     }
 }
