@@ -3,7 +3,6 @@ package com.example.kakaotalk.presentation.folder.folderedit.component
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,6 +20,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.kakaotalk.R
+import com.example.kakaotalk.core.common.extension.noRippleClickable
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 
 @Composable
@@ -28,14 +28,14 @@ fun FolderEditIcon(
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
     isSelected: Boolean = false,
-    @DrawableRes icon: Int = R.drawable.ic_edit_chunsik_24
+    @DrawableRes icon: Int = R.drawable.ic_no_exist_24
 ){
     Box(
         modifier = modifier
             .size(45.dp)
             .clip(shape = CircleShape)
             .let { if (isSelected) it.border(2.dp, KakaoTheme.colors.gray800, CircleShape) else it }
-            .clickable(onClick = onClick)
+            .noRippleClickable(onClick = onClick)
             .background(color = KakaoTheme.colors.gray200),
         contentAlignment = Alignment.Center,
     ){

@@ -1,0 +1,47 @@
+package com.example.kakaotalk.presentation.folder.folderedit.component
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
+import com.example.kakaotalk.presentation.folder.folderedit.model.iconList
+
+@Composable
+fun FolderEditIconSection(
+    onIconClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    isIconSelected: Boolean = false,
+){
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(6),
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+        modifier = modifier
+    ) {
+        items(iconList) { icon ->
+            FolderEditIcon(
+                modifier = Modifier.aspectRatio(1f),
+                onClick = onIconClick,
+                isSelected = isIconSelected,
+                icon = icon
+            )
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun FolderEditIconSectionPreview(){
+    KakaoTheme{
+        FolderEditIconSection(
+            onIconClick = {},
+        )
+    }
+}
