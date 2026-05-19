@@ -1,11 +1,15 @@
 package com.example.kakaotalk.presentation.folder.folderedit.component
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -16,22 +20,33 @@ import com.example.kakaotalk.presentation.folder.folderedit.model.iconList
 @Composable
 fun FolderEditIconSection(
     onIconClick: () -> Unit,
+    isIconSelected: Boolean,
     modifier: Modifier = Modifier,
-    isIconSelected: Boolean = false,
 ){
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(6),
-        horizontalArrangement = Arrangement.spacedBy(12.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
+    Column(
         modifier = modifier
     ) {
-        items(iconList) { icon ->
-            FolderEditIcon(
-                modifier = Modifier.aspectRatio(1f),
-                onClick = onIconClick,
-                isSelected = isIconSelected,
-                icon = icon
-            )
+        Text(
+            text = "폴더 아이콘",
+            color = KakaoTheme.colors.gray900,
+            style = KakaoTheme.typography.body3
+        )
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(6),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            items(iconList) { icon ->
+                FolderEditIcon(
+                    modifier = Modifier.aspectRatio(1f),
+                    onClick = onIconClick,
+                    isSelected = isIconSelected,
+                    icon = icon
+                )
+            }
         }
     }
 }
@@ -42,6 +57,7 @@ private fun FolderEditIconSectionPreview(){
     KakaoTheme{
         FolderEditIconSection(
             onIconClick = {},
+            isIconSelected = false
         )
     }
 }
