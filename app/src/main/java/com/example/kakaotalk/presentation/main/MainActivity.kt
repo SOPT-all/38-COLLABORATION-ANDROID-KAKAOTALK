@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
+import com.example.kakaotalk.presentation.chatlist.ChatListRoute
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,9 +21,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             KakaoTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+//                    Greeting(
+//                        name = "Android",
+//                        modifier = Modifier.padding(innerPadding)
+//                    )
+                    ChatListRoute(
+                        modifier = Modifier.padding(innerPadding),
+                        onNavigateToFolderHome = { }
                     )
                 }
             }
