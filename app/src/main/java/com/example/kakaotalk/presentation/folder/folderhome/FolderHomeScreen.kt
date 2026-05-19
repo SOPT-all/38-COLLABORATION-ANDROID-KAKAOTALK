@@ -69,7 +69,6 @@ private fun FolderHomeScreen(
                     KakaoFolderItem(
                         text = folder.title,
                         icon = folder.icon,
-                        iconColor = folder.iconColor,
                     )
 
                     if (index != folderHomeList.lastIndex) {
