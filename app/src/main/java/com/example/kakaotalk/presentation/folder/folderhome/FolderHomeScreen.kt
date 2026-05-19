@@ -17,33 +17,37 @@ import com.example.kakaotalk.core.designsystem.component.KakaoButton
 import com.example.kakaotalk.core.designsystem.component.KakaoFolderItem
 import com.example.kakaotalk.core.designsystem.component.KakaoTopAppBar
 import com.example.kakaotalk.presentation.folder.folderhome.component.KakaoFolderHeader
+import com.example.kakaotalk.presentation.folder.folderhome.model.FolderType
 import com.example.kakaotalk.presentation.folder.folderhome.model.folderHomeList
 import com.example.kakaotalk.presentation.folder.folderhome.model.folderHomeNumberList
 
 @Composable
 fun FolderHomeRoute(
+    navigateUp: () -> Unit,
+    navigateToFolderMore: () -> Unit,
+    navigateToChatlist: (FolderType) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     FolderHomeScreen(
-        onMoreClick = {},
-        onBackClick = {},
-        onArrowClick = {},
+        navigateUp = navigateUp,
+        navigateToFolderMore = navigateToFolderMore,
+        navigateToChatlist = navigateToChatlist,
         modifier = modifier
     )
 }
 
 @Composable
 private fun FolderHomeScreen(
-    onBackClick: () -> Unit,
-    onMoreClick: () -> Unit,
-    onArrowClick: () -> Unit,
+    navigateUp: () -> Unit,
+    navigateToFolderMore: () -> Unit,
+    navigateToChatlist: (FolderType) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier
             .background(KakaoTheme.colors.white)
             .fillMaxSize(),
-    ){
+    ) {
         Column(
             modifier = Modifier
                 .padding(top = 41.dp)
@@ -53,18 +57,18 @@ private fun FolderHomeScreen(
             KakaoTopAppBar(
                 modifier = Modifier,
                 text = "채팅방 폴더 관리",
-                onBackClick = onBackClick,
+                onBackClick = navigateUp,
             )
 
             KakaoFolderHeader(
                 modifier = Modifier,
-                onMoreClick = onMoreClick,
+                onMoreClick = navigateToFolderMore,
             )
 
             Column(
                 modifier = Modifier,
                 verticalArrangement = Arrangement.spacedBy(13.dp),
-            ){
+            ) {
                 folderHomeList.forEachIndexed { index, folder ->
                     KakaoFolderItem(
                         text = folder.title,
@@ -93,14 +97,16 @@ private fun FolderHomeScreen(
         Column(
             modifier = Modifier.padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(24.dp),
-        ){
+        ) {
             folderHomeNumberList.forEach { folder ->
                 KakaoFolderItem(
                     text = folder.title,
                     icon = folder.icon,
                     isNumVisible = true,
                     folderCount = folder.folderCount,
-                    onArrowClick = onArrowClick,
+                    onArrowClick = {
+                        navigateToChatlist(folder.folderType)
+                    },
                 )
             }
 
@@ -120,9 +126,9 @@ private fun FolderHomeScreen(
 private fun FolderHomePreview() {
     KakaoTheme {
         FolderHomeScreen(
-            onMoreClick = {},
-            onBackClick = {},
-            onArrowClick = {},
+            navigateUp = {},
+            navigateToFolderMore = {},
+            navigateToChatlist = {},
         )
     }
 }
