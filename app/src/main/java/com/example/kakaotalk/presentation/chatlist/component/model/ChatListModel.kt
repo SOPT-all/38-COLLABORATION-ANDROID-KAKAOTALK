@@ -3,19 +3,20 @@ package com.example.kakaotalk.presentation.chatlist.component.model
 import androidx.annotation.DrawableRes
 
 data class FolderItemModel(
-    val id: String,
+    val id: Int,
     val name: String,
-    @DrawableRes val icon: Int,
-    val unreadCount: Int
+    @DrawableRes val icon: Int? = null,
+    val unreadCount: Int = 0,
+    val isVisible: Boolean = true
 )
 
 data class ChatListItemModel(
-    val id: String,
+    val id: Int,
     val title: String,
     val participantCount: Int,
     val lastMessage: String,
     val lastMessageAt: String,
-    val unreadCount: Int,
+    val unreadCount: Int = 0,
     val folderNames: Array<String> = emptyArray()
 )
 

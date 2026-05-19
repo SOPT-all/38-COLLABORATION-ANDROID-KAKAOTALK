@@ -27,18 +27,21 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.kakaotalk.R
+import com.example.kakaotalk.core.designsystem.component.KakaoModal
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 import com.example.kakaotalk.presentation.chatlist.component.ChatListBottomBar
 import com.example.kakaotalk.presentation.chatlist.component.ChatListItem
 import com.example.kakaotalk.presentation.chatlist.component.ChatListTopBar
 import com.example.kakaotalk.presentation.chatlist.component.menuButton.ChatListMenuButton
 import com.example.kakaotalk.presentation.chatlist.component.menuButton.ChatListMenuPlusButton
+import com.example.kakaotalk.presentation.chatlist.component.model.ChatListItemModel
+import com.example.kakaotalk.presentation.chatlist.component.model.FolderItemModel
 
 @Composable
 fun ChatListRoute(
-    viewModel: ChatListViewModel = viewModel(),
     modifier: Modifier = Modifier,
-    onNavigateToFolderHome: () -> Unit
+    onNavigateToFolderHome: () -> Unit,
+    viewModel: ChatListViewModel = viewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -46,7 +49,9 @@ fun ChatListRoute(
         uiState = uiState,
         modifier = modifier,
         onFolderPlusClick = { onNavigateToFolderHome() },
-        onChatListItemClick = { } // vizewModel.modalVisible등
+        onChatListItemClick = { id -> viewModel.showModal(id) },
+        onConfirmClick = { viewModel.confirmAction() },
+        onDismissClick = { viewModel.closeModal() }, // viewModel.modalVisible등
     )
 }
 
@@ -55,9 +60,11 @@ private fun ChatListScreen(
     uiState: ChatListUiState,
     modifier: Modifier = Modifier,
     onFolderPlusClick: () -> Unit,
-    onChatListItemClick: () -> Unit,
+    onChatListItemClick: (id: Int) -> Unit,
+    onConfirmClick: () -> Unit,
+    onDismissClick: () -> Unit
 ) {
-    var selectedCategoryId by remember { mutableStateOf("item_all") }
+    var selectedCategoryId by remember { mutableStateOf(-1) }
 
     Box(
         modifier = modifier
@@ -78,12 +85,15 @@ private fun ChatListScreen(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(6.dp)
             ) {
+                val visibleFolders = uiState.folderList.filter { it.isVisible == true }
+
                 items(
-                    items = uiState.folderList,
+                    items = visibleFolders,
                     key = { it.id }
                 ) { item ->
                     ChatListMenuButton(
                         text = item.name,
+                        icon = item.icon,
                         numOfUnread = item.unreadCount,
                         isSelected = selectedCategoryId == item.id,
                         onClick = { selectedCategoryId = item.id }
@@ -123,7 +133,8 @@ private fun ChatListScreen(
                         memberCount = item.participantCount,
                         date = item.lastMessageAt,
                         chatMessage = item.lastMessage,
-                        unreadCount = item.unreadCount
+                        unreadCount = item.unreadCount,
+                        onClick = { onChatListItemClick(item.id) }
                     )
                 }
             }
@@ -134,6 +145,17 @@ private fun ChatListScreen(
                 .align(Alignment.BottomCenter)
                 .background(KakaoTheme.colors.white)
         )
+
+        if (uiState.showModal) {
+            KakaoModal(
+                title = "안읽은 메시지 확인",
+                description = "해당 채팅방에 안읽은 메시지를 모두 읽음 처리 했습니다.",
+                cancelText = "취소",
+                confirmText = "확인",
+                onConfirm = { onConfirmClick() },
+                onDismiss = { onDismissClick() }
+            )
+        }
     }
 }
 
@@ -142,10 +164,65 @@ private fun ChatListScreen(
 private fun ChatListPreview() {
     KakaoTheme {
         ChatListScreen(
-            modifier = TODO(),
-            onFolderPlusClick = TODO(),
-            onChatListItemClick = TODO(),
-            uiState = TODO(),
+            modifier = Modifier,
+            onFolderPlusClick = { },
+            onChatListItemClick = { },
+            uiState = ChatListUiState(
+                chatList = listOf(
+                    ChatListItemModel(
+                        id = 1,
+                        title = "Android",
+                        participantCount = 4,
+                        lastMessageAt = "어제",
+                        lastMessage = "아 그저께 두쫀쿠가 진짜 태풍을 일으켰는데 비가 진짜 엄청나게 쏟아지더라 근데 CU 우산이 생각보다 구리다는거",
+                        unreadCount = 11,
+                        folderNames = arrayOf("SOPT")
+                    ),
+                    ChatListItemModel(
+                        id = 2,
+                        title = "Sopt 전체",
+                        participantCount = 5,
+                        lastMessageAt = "오늘",
+                        lastMessage = "민경님이랑 친해져야 하는데 교양수업 같이 듣는데 접점이없어요",
+                        unreadCount = 3,
+                        folderNames = arrayOf("SOPT")
+                    ),
+                    ChatListItemModel(
+                        id = 3,
+                        title = "하나",
+                        participantCount = 2,
+                        lastMessageAt = "05/16",
+                        lastMessage = "자? 가위 풀 내일 준비물",
+                        unreadCount = 0,
+                        folderNames = arrayOf("학교")
+                    ),
+                    ChatListItemModel(
+                        id = 4,
+                        title = "둘",
+                        participantCount = 4,
+                        lastMessageAt = "05/14",
+                        lastMessage = "한로로 축제공연 화이팅",
+                        unreadCount = 3
+                    )
+                ),
+                folderList = listOf(
+                    FolderItemModel(
+                        id = -1, name = "전체", unreadCount = 0
+                    ),
+                    FolderItemModel(
+                        id = -2, name = "안읽음", unreadCount = 12,
+                        icon = R.drawable.ic_no_read_24
+                    ),
+                    FolderItemModel(
+                        id = 1, name = "SOPT", unreadCount = 11
+                    ),
+                    FolderItemModel(
+                        id = 2, name = "학교", unreadCount = 212
+                    )
+                )
+            ),
+            onConfirmClick = { },
+            onDismissClick = { }
         )
     }
 }

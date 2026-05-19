@@ -1,5 +1,6 @@
 package com.example.kakaotalk.presentation.chatlist.component
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,7 +14,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.kakaotalk.core.common.extension.noRippleClickable
 import com.example.kakaotalk.core.designsystem.component.KakaoChatProfile.KakaoChatRoomProfile
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 import com.example.kakaotalk.presentation.chatlist.component.menuButton.NumOfChat
@@ -29,7 +29,7 @@ fun ChatListItem(
     modifier: Modifier = Modifier
 ){
     Row(
-        modifier = modifier.noRippleClickable(onClick = { onClick() }),
+        modifier = modifier.clickable(onClick = { onClick() }),
     ) {
         KakaoChatRoomProfile()
 

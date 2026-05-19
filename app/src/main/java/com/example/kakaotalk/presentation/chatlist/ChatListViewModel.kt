@@ -7,31 +7,29 @@ import com.example.kakaotalk.presentation.chatlist.component.model.FolderItemMod
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 
 class ChatListViewModel : ViewModel() {
 
     val dummyFolderList = listOf(
         FolderItemModel(
-            id = "item_all", name = "전체", unreadCount = 0,
-            icon = TODO()
+            id = -1, name = "전체", unreadCount = 0
         ),
         FolderItemModel(
-            id = "unread", name = "안읽음", unreadCount = 12,
+            id = -2, name = "안읽음", unreadCount = 12,
             icon = R.drawable.ic_no_read_24
         ),
         FolderItemModel(
-            id = "folder_1", name = "SOPT", unreadCount = 11,
-            icon = TODO()
+            id = 1, name = "SOPT", unreadCount = 11
         ),
         FolderItemModel(
-            id = "folder_2", name = "학교", unreadCount = 212,
-            icon = TODO()
+            id = 2, name = "학교", unreadCount = 212
         )
     )
 
     val dummyChatList = listOf(
         ChatListItemModel(
-            id = "item_1",
+            id = 1,
             title = "Android",
             participantCount = 4,
             lastMessageAt = "어제",
@@ -40,7 +38,7 @@ class ChatListViewModel : ViewModel() {
             folderNames = arrayOf("SOPT")
         ),
         ChatListItemModel(
-            id = "item_2",
+            id = 2,
             title = "Sopt 전체",
             participantCount = 5,
             lastMessageAt = "오늘",
@@ -49,7 +47,7 @@ class ChatListViewModel : ViewModel() {
             folderNames = arrayOf("SOPT")
         ),
         ChatListItemModel(
-            id = "item_3",
+            id = 3,
             title = "하나",
             participantCount = 2,
             lastMessageAt = "05/16",
@@ -58,7 +56,7 @@ class ChatListViewModel : ViewModel() {
             folderNames = arrayOf("학교")
         ),
         ChatListItemModel(
-            id = "item_4",
+            id = 4,
             title = "둘",
             participantCount = 4,
             lastMessageAt = "05/14",
@@ -73,4 +71,43 @@ class ChatListViewModel : ViewModel() {
         )
     )
     val uiState: StateFlow<ChatListUiState> = _uiState.asStateFlow()
+
+    fun showModal(id: Int) {
+        _uiState.update {
+            it.copy(
+                selectChatId = id,
+                showModal = true
+            )
+        }
+    }
+
+    fun closeModal() {
+        _uiState.update {
+            it.copy(
+                selectChatId = null,
+                showModal = false
+            )
+        }
+    }
+
+    fun confirmAction() {
+        clearUnread()
+        closeModal()
+    }
+
+    private fun clearUnread() {
+        val targetChatId = uiState.value.selectChatId ?: return
+
+        _uiState.update {
+            it.copy(
+                chatList = it.chatList.map { chatItem ->
+                    if (chatItem.id == targetChatId) {
+                        chatItem.copy(unreadCount = 0)
+                    } else {
+                        chatItem
+                    }
+                }
+            )
+        }
+    }
 }
