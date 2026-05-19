@@ -9,12 +9,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.kakaotalk.R
 import com.example.kakaotalk.core.designsystem.component.KakaoButton
 import com.example.kakaotalk.core.designsystem.component.KakaoFolderItem
@@ -24,23 +21,20 @@ import com.example.kakaotalk.presentation.folder.folderhome.component.KakaoFolde
 @Composable
 fun FolderHomeRoute(
     modifier: Modifier = Modifier,
-    viewModel: FolderHomeViewModel = viewModel(),
 ) {
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-
     FolderHomeScreen(
-        uiState = uiState,
         onMoreClick = {},
         onBackClick = {},
+        onArrowClick = {},
         modifier = modifier
     )
 }
 
 @Composable
 private fun FolderHomeScreen(
-    uiState: FolderHomeUiState,
     onBackClick: () -> Unit,
     onMoreClick: () -> Unit,
+    onArrowClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -101,11 +95,11 @@ private fun FolderHomeScreen(
             verticalArrangement = Arrangement.spacedBy(24.dp),
         ){
             KakaoFolderItem(
-                text = uiState.folderName,
+                text = "기계",
                 icon = R.drawable.ic_folder_24,
                 isNumVisible = true,
-                folderCount = uiState.folderCount,
-                onArrowClick = {},
+                folderCount = 9,
+                onArrowClick = onArrowClick,
             )
 
             KakaoButton(
@@ -124,12 +118,9 @@ private fun FolderHomeScreen(
 private fun FolderHomePreview() {
     KakaoTheme {
         FolderHomeScreen(
-            uiState = FolderHomeUiState(
-                folderName = "기계",
-                folderCount = 9,
-            ),
             onMoreClick = {},
             onBackClick = {},
+            onArrowClick = {},
         )
     }
 }
