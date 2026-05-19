@@ -24,6 +24,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.kakaotalk.R
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 import com.example.kakaotalk.presentation.chatlist.component.ChatListBottomBar
@@ -34,61 +36,28 @@ import com.example.kakaotalk.presentation.chatlist.component.menuButton.ChatList
 
 @Composable
 fun ChatListRoute(
-    modifier: Modifier = Modifier
+    viewModel: ChatListViewModel = viewModel(),
+    modifier: Modifier = Modifier,
+    onNavigateToFolderHome: () -> Unit
 ) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
     ChatListScreen(
+        uiState = uiState,
         modifier = modifier,
-        onFolderPlusClick = TODO()
+        onFolderPlusClick = { onNavigateToFolderHome() },
+        onChatListItemClick = { } // vizewModel.modalVisible등
     )
 }
 
 @Composable
 private fun ChatListScreen(
+    uiState: ChatListUiState,
     modifier: Modifier = Modifier,
-    onFolderPlusClick: () -> Unit
+    onFolderPlusClick: () -> Unit,
+    onChatListItemClick: () -> Unit,
 ) {
     var selectedCategoryId by remember { mutableStateOf("item_all") }
-
-    val dummyList = listOf(
-        DummyFolder(id = "item_all", text = "전체", number = 0),
-        DummyFolder(id = "folder_1", text = "전체 아님ㅋ", number = 11),
-        DummyFolder(id = "folder_2", text = "전체 일수도?", number = 212)
-    )
-
-    val dummyChatList = listOf(
-        ChatListItemModel(
-            id = "item_1",
-            chatTitle = "Android",
-            4,
-            date = "어제",
-            "아 그저께 두쫀쿠가 진짜 태풍을 일으켰는데 비가 진짜 엄청나게 쏟아지더라 근데 CU 우산이 생각보다 구리다는거",
-            unreadCount = 11
-        ),
-        ChatListItemModel(
-            id = "item_2",
-            chatTitle = "Sopt 전체",
-            5,
-            date = "오늘",
-            "민경님이랑 친해져야 하는데 교양수업 같이 듣는데 접점이없어요",
-            unreadCount = 3
-        ),
-        ChatListItemModel(
-            id = "item_3",
-            chatTitle = "하나",
-            2,
-            date = "05/16",
-            "자? 가위 풀 내일 준비물",
-            unreadCount = 0
-        ),
-        ChatListItemModel(
-            id = "item_4",
-            chatTitle = "둘",
-            4,
-            date = "05/14",
-            "한로로 축제공연 화이팅",
-            unreadCount = 3
-        ),
-    )
 
     Box(
         modifier = modifier
@@ -110,12 +79,12 @@ private fun ChatListScreen(
                 horizontalArrangement = Arrangement.spacedBy(6.dp)
             ) {
                 items(
-                    items = dummyList,
+                    items = uiState.folderList,
                     key = { it.id }
                 ) { item ->
                     ChatListMenuButton(
-                        text = item.text,
-                        numOfUnread = item.number,
+                        text = item.name,
+                        numOfUnread = item.unreadCount,
                         isSelected = selectedCategoryId == item.id,
                         onClick = { selectedCategoryId = item.id }
                     )
@@ -146,14 +115,14 @@ private fun ChatListScreen(
                 verticalArrangement = Arrangement.spacedBy(14.dp)
             ) {
                 items(
-                    items = dummyChatList,
+                    items = uiState.chatList,
                     key = { it.id }
                 ) { item ->
                     ChatListItem(
-                        chatTitle = item.chatTitle,
-                        memberCount = item.memberCount,
-                        date = item.date,
-                        chatMessage = item.chatMessage,
+                        chatTitle = item.title,
+                        memberCount = item.participantCount,
+                        date = item.lastMessageAt,
+                        chatMessage = item.lastMessage,
                         unreadCount = item.unreadCount
                     )
                 }
@@ -168,27 +137,15 @@ private fun ChatListScreen(
     }
 }
 
-data class DummyFolder(
-    val id: String,
-    val text: String,
-    val number: Int
-)
-
-data class ChatListItemModel(
-    val id: String,
-    val chatTitle: String,
-    val memberCount: Int,
-    val date: String,
-    val chatMessage: String,
-    val unreadCount: Int
-)
-
 @Preview(showBackground = true)
 @Composable
 private fun ChatListPreview() {
     KakaoTheme {
         ChatListScreen(
-            onFolderPlusClick = TODO()
+            modifier = TODO(),
+            onFolderPlusClick = TODO(),
+            onChatListItemClick = TODO(),
+            uiState = TODO(),
         )
     }
 }

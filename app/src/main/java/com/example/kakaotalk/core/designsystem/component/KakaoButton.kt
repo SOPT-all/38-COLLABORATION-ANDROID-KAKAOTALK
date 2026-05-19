@@ -24,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.kakaotalk.R
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
+import com.example.letssopt.R
 
 @Composable
 fun KakaoButton(
