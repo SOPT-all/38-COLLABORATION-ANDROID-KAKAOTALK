@@ -10,12 +10,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.kakaotalk.R
 import com.example.kakaotalk.core.designsystem.component.KakaoFolderItem
 import com.example.kakaotalk.core.designsystem.component.KakaoTopAppBar
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 import com.example.kakaotalk.presentation.folder.folderhome.component.KakaoFolderHeader
-import com.example.kakaotalk.presentation.folder.folderhome.model.folderHomeList
 import com.example.kakaotalk.presentation.folder.foldermore.model.folderMoreList
 
 @Composable
