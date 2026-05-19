@@ -63,6 +63,55 @@ class ChatListViewModel : ViewModel() {
             lastMessage = "한로로 축제공연 화이팅",
             unreadCount = 3
         ),
+        ChatListItemModel(
+            id = 5,
+            title = "둘",
+            participantCount = 4,
+            lastMessageAt = "05/14",
+            lastMessage = "한로로 축제공연 화이팅",
+            unreadCount = 3
+        ),
+        ChatListItemModel(
+            id = 6,
+            title = "둘",
+            participantCount = 4,
+            lastMessageAt = "05/14",
+            lastMessage = "한로로 축제공연 화이팅",
+            unreadCount = 3
+        ),
+        ChatListItemModel(
+            id = 7,
+            title = "둘",
+            participantCount = 4,
+            lastMessageAt = "05/14",
+            lastMessage = "한로로 축제공연 화이팅",
+            unreadCount = 3
+        ),ChatListItemModel(
+            id = 8,
+            title = "둘",
+            participantCount = 4,
+            lastMessageAt = "05/14",
+            lastMessage = "한로로 축제공연 화이팅",
+            unreadCount = 3
+        ),
+        ChatListItemModel(
+            id = 9,
+            title = "둘",
+            participantCount = 4,
+            lastMessageAt = "05/14",
+            lastMessage = "한로로 축제공연 화이팅",
+            unreadCount = 3
+        ),
+        ChatListItemModel(
+            id = 10,
+            title = "둘",
+            participantCount = 4,
+            lastMessageAt = "05/14",
+            lastMessage = "한로로 축제공연 화이팅",
+            unreadCount = 3
+        ),
+
+
     )
     private val _uiState = MutableStateFlow(
         ChatListUiState(

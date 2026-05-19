@@ -74,7 +74,8 @@ private fun ChatListScreen(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 38.dp, start = 16.dp, end = 16.dp)
+                .padding(top = 38.dp)
+                .padding(horizontal = 16.dp)
                 .align(Alignment.TopCenter)
         ) {
             ChatListTopBar()
@@ -121,7 +122,8 @@ private fun ChatListScreen(
             LazyColumn(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(1f),
+                    .weight(1f)
+                    .padding(bottom = 100.dp),
                 verticalArrangement = Arrangement.spacedBy(14.dp)
             ) {
                 items(
