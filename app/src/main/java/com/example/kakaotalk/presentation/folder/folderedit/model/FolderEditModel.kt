@@ -40,4 +40,16 @@ val folderEditChatList = listOf(
         chatName = "기계공학부 23번 공지방",
         peopleNum = 76
     ),
+    FolderEditChatListModel(
+        chatName = "[Let’s SOPT] 벋벋 17조",
+        peopleNum = 7
+    ),
+    FolderEditChatListModel(
+        chatName = "35기 SSARA 대화방",
+        peopleNum = 76
+    ),
+    FolderEditChatListModel(
+        chatName = "기계공학부 23번 공지방",
+        peopleNum = 76
+    ),
 )
