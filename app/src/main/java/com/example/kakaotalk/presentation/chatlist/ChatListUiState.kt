@@ -1,7 +1,7 @@
 package com.example.kakaotalk.presentation.chatlist
 
-import com.example.kakaotalk.presentation.chatlist.component.model.ChatListItemModel
-import com.example.kakaotalk.presentation.chatlist.component.model.FolderItemModel
+import com.example.kakaotalk.presentation.chatlist.model.ChatListItemModel
+import com.example.kakaotalk.presentation.chatlist.model.FolderItemModel
 
 data class ChatListUiState (
     val chatList: List<ChatListItemModel>,

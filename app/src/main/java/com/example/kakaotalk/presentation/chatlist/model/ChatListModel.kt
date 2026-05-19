@@ -1,4 +1,4 @@
-package com.example.kakaotalk.presentation.chatlist.component.model
+package com.example.kakaotalk.presentation.chatlist.model
 
 import androidx.annotation.DrawableRes
 

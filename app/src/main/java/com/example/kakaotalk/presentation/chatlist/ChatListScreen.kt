@@ -34,8 +34,8 @@ import com.example.kakaotalk.presentation.chatlist.component.ChatListItem
 import com.example.kakaotalk.presentation.chatlist.component.ChatListTopBar
 import com.example.kakaotalk.presentation.chatlist.component.menuButton.ChatListMenuButton
 import com.example.kakaotalk.presentation.chatlist.component.menuButton.ChatListMenuPlusButton
-import com.example.kakaotalk.presentation.chatlist.component.model.ChatListItemModel
-import com.example.kakaotalk.presentation.chatlist.component.model.FolderItemModel
+import com.example.kakaotalk.presentation.chatlist.model.ChatListItemModel
+import com.example.kakaotalk.presentation.chatlist.model.FolderItemModel
 
 @Composable
 fun ChatListRoute(

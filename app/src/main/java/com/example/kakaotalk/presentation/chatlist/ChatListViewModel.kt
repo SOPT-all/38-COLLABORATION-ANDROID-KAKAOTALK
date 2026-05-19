@@ -2,8 +2,8 @@ package com.example.kakaotalk.presentation.chatlist
 
 import androidx.lifecycle.ViewModel
 import com.example.kakaotalk.R
-import com.example.kakaotalk.presentation.chatlist.component.model.ChatListItemModel
-import com.example.kakaotalk.presentation.chatlist.component.model.FolderItemModel
+import com.example.kakaotalk.presentation.chatlist.model.ChatListItemModel
+import com.example.kakaotalk.presentation.chatlist.model.FolderItemModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
