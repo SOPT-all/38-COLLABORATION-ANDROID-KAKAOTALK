@@ -17,6 +17,7 @@ import com.example.kakaotalk.core.designsystem.component.KakaoButton
 import com.example.kakaotalk.core.designsystem.component.KakaoFolderItem
 import com.example.kakaotalk.core.designsystem.component.KakaoTopAppBar
 import com.example.kakaotalk.presentation.folder.folderhome.component.KakaoFolderHeader
+import com.example.kakaotalk.presentation.folder.folderhome.model.folderHomeList
 
 @Composable
 fun FolderHomeRoute(
@@ -63,22 +64,21 @@ private fun FolderHomeScreen(
                 modifier = Modifier,
                 verticalArrangement = Arrangement.spacedBy(13.dp),
             ){
-                KakaoFolderItem(
-                    text = "ChatGPT",
-                    icon = R.drawable.ic_gpt_24,
-                )
+                folderHomeList.forEachIndexed { index, folder ->
+                    KakaoFolderItem(
+                        text = folder.title,
+                        icon = folder.icon,
+                        iconColor = folder.iconColor,
+                    )
 
-                HorizontalDivider(
-                    modifier = Modifier.fillMaxWidth(),
-                    thickness = 1.dp,
-                    color = KakaoTheme.colors.gray100,
-                )
-
-                KakaoFolderItem(
-                    text = "즐겨찾기",
-                    icon = R.drawable.ic_star_24,
-                    iconColor = KakaoTheme.colors.orange200,
-                )
+                    if (index != folderHomeList.lastIndex) {
+                        HorizontalDivider(
+                            modifier = Modifier.fillMaxWidth(),
+                            thickness = 1.dp,
+                            color = KakaoTheme.colors.gray100,
+                        )
+                    }
+                }
             }
         }
 
