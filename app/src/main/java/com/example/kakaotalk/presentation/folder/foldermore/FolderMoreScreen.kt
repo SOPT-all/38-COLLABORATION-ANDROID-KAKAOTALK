@@ -15,7 +15,8 @@ import com.example.kakaotalk.core.designsystem.component.KakaoFolderItem
 import com.example.kakaotalk.core.designsystem.component.KakaoTopAppBar
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 import com.example.kakaotalk.presentation.folder.folderhome.component.KakaoFolderHeader
-
+import com.example.kakaotalk.presentation.folder.folderhome.model.folderHomeList
+import com.example.kakaotalk.presentation.folder.foldermore.model.folderMoreList
 
 @Composable
 fun FolderMoreRoute(
@@ -53,47 +54,23 @@ private fun FolderMoreScreen(
             modifier = Modifier,
             verticalArrangement = Arrangement.spacedBy(13.dp),
         ){
-            KakaoFolderItem(
-                text = "ChatGPT",
-                icon = R.drawable.ic_gpt_24,
-            )
+            folderMoreList.forEachIndexed { index, folder ->
+                KakaoFolderItem(
+                    text = folder.title,
+                    icon = folder.icon,
+                )
 
-            HorizontalDivider(
-                modifier = Modifier,
-                thickness = 1.dp,
-                color = KakaoTheme.colors.gray100,
-            )
-
-            KakaoFolderItem(
-                text = "즐겨찾기",
-                icon = R.drawable.ic_star_24,
-                iconColor = KakaoTheme.colors.orange200,
-            )
-
-            HorizontalDivider(
-                modifier = Modifier,
-                thickness = 1.dp,
-                color = KakaoTheme.colors.gray100,            )
-
-            KakaoFolderItem(
-                text = "서울여자대학교",
-                icon = R.drawable.ic_edit_pencil_24,
-            )
-
-            HorizontalDivider(
-                modifier = Modifier,
-                thickness = 1.dp,
-                color = KakaoTheme.colors.gray100,            )
-
-            KakaoFolderItem(
-                text = "SOPT",
-                icon = R.drawable.ic_edit_bag_24,
-            )
+                if (index != folderMoreList.lastIndex) {
+                    HorizontalDivider(
+                        modifier = Modifier,
+                        thickness = 1.dp,
+                        color = KakaoTheme.colors.gray100,
+                    )
+                }
+            }
         }
     }
 }
-
-
 
 @Preview(showBackground = true)
 @Composable
