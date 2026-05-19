@@ -20,7 +20,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.letssopt"
+        applicationId = "com.example.kakaotalk"
         minSdk = 26
         targetSdk = 36
         versionCode = 1
