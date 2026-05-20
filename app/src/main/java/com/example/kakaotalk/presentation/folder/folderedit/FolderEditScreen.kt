@@ -26,6 +26,10 @@ import com.example.kakaotalk.core.designsystem.component.KakaoButton
 import com.example.kakaotalk.core.designsystem.component.KakaoModal
 import com.example.kakaotalk.presentation.folder.folderedit.component.FolderEditBottomSection
 import com.example.kakaotalk.presentation.folder.folderedit.component.FolderEditTopSection
+import kotlinx.serialization.Serializable
+
+@Serializable
+data object FolderEdit
 
 @Composable
 fun FolderEditRoute(
@@ -60,9 +64,15 @@ private fun FolderEditScreen(
     var isDeleteSelectedChatModalVisible by remember { mutableStateOf(false) }
     var isDeleteAllChatModalVisible by remember { mutableStateOf(false) }
 
-    Box(modifier = modifier.fillMaxSize()){
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+            .background(color = KakaoTheme.colors.white)
+    ){
         Column(
-            modifier = Modifier.align(Alignment.TopCenter)
+            modifier = Modifier
+                .padding(top = 41.dp)
+                .align(Alignment.TopCenter)
         ) {
             FolderEditTopSection(
                 onBackClick = onBackClick,

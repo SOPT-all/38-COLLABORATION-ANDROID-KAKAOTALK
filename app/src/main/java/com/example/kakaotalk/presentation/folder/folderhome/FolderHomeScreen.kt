@@ -3,6 +3,7 @@ package com.example.kakaotalk.presentation.folder.folderhome
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -20,19 +21,23 @@ import com.example.kakaotalk.presentation.folder.folderhome.component.KakaoFolde
 import com.example.kakaotalk.presentation.folder.folderhome.model.FolderType
 import com.example.kakaotalk.presentation.folder.folderhome.model.folderHomeList
 import com.example.kakaotalk.presentation.folder.folderhome.model.folderHomeNumberList
+import kotlinx.serialization.Serializable
+
+@Serializable
+data object FolderHome
 
 @Composable
 fun FolderHomeRoute(
+    paddingValues: PaddingValues,
     navigateUp: () -> Unit,
     navigateToFolderMore: () -> Unit,
-    navigateToChatlist: (FolderType) -> Unit,
-    modifier: Modifier = Modifier,
+    navigateToFolderEdit: (FolderType) -> Unit,
 ) {
     FolderHomeScreen(
         navigateUp = navigateUp,
         navigateToFolderMore = navigateToFolderMore,
-        navigateToChatlist = navigateToChatlist,
-        modifier = modifier
+        navigateToFolderEdit = navigateToFolderEdit,
+        modifier = Modifier.padding(paddingValues),
     )
 }
 
@@ -40,7 +45,7 @@ fun FolderHomeRoute(
 private fun FolderHomeScreen(
     navigateUp: () -> Unit,
     navigateToFolderMore: () -> Unit,
-    navigateToChatlist: (FolderType) -> Unit,
+    navigateToFolderEdit : (FolderType) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -105,7 +110,7 @@ private fun FolderHomeScreen(
                     isNumVisible = true,
                     folderCount = folder.folderCount,
                     onArrowClick = {
-                        navigateToChatlist(folder.folderType)
+                        navigateToFolderEdit(folder.folderType)
                     },
                 )
             }
@@ -128,7 +133,7 @@ private fun FolderHomePreview() {
         FolderHomeScreen(
             navigateUp = {},
             navigateToFolderMore = {},
-            navigateToChatlist = {},
+            navigateToFolderEdit = {},
         )
     }
 }

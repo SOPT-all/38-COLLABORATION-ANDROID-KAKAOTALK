@@ -13,6 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 import com.example.kakaotalk.presentation.folder.folderedit.FolderEditRoute
+import com.example.kakaotalk.presentation.main.navigation.MainNavHost
+import com.example.kakaotalk.presentation.main.navigation.rememberMainAppState
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,10 +22,12 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             KakaoTheme {
+                val appState = rememberMainAppState()
+
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    FolderEditRoute(
+                    MainNavHost(
+                        appState = appState,
                         paddingValues = innerPadding,
-                        navigateUp = {}
                     )
                 }
             }
