@@ -70,7 +70,9 @@ private fun FolderEditScreen(
             .background(color = KakaoTheme.colors.white)
     ){
         Column(
-            modifier = Modifier.align(Alignment.TopCenter)
+            modifier = Modifier
+                .padding(top = 41.dp)
+                .align(Alignment.TopCenter)
         ) {
             FolderEditTopSection(
                 onBackClick = onBackClick,
