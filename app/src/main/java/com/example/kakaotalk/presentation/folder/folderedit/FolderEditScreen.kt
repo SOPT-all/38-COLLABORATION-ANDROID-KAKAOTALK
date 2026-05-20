@@ -64,7 +64,11 @@ private fun FolderEditScreen(
     var isDeleteSelectedChatModalVisible by remember { mutableStateOf(false) }
     var isDeleteAllChatModalVisible by remember { mutableStateOf(false) }
 
-    Box(modifier = modifier.fillMaxSize()){
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+            .background(color = KakaoTheme.colors.white)
+    ){
         Column(
             modifier = Modifier.align(Alignment.TopCenter)
         ) {
