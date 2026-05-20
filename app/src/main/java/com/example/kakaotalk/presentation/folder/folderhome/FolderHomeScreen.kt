@@ -31,12 +31,12 @@ fun FolderHomeRoute(
     paddingValues: PaddingValues,
     navigateUp: () -> Unit,
     navigateToFolderMore: () -> Unit,
-    navigateToChatlist: (FolderType) -> Unit,
+    navigateToFolderEdit: (FolderType) -> Unit,
 ) {
     FolderHomeScreen(
         navigateUp = navigateUp,
         navigateToFolderMore = navigateToFolderMore,
-        navigateToChatlist = navigateToChatlist,
+        navigateToFolderEdit = navigateToFolderEdit,
         modifier = Modifier.padding(paddingValues),
     )
 }
@@ -45,7 +45,7 @@ fun FolderHomeRoute(
 private fun FolderHomeScreen(
     navigateUp: () -> Unit,
     navigateToFolderMore: () -> Unit,
-    navigateToChatlist: (FolderType) -> Unit,
+    navigateToFolderEdit : (FolderType) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -110,7 +110,7 @@ private fun FolderHomeScreen(
                     isNumVisible = true,
                     folderCount = folder.folderCount,
                     onArrowClick = {
-                        navigateToChatlist(folder.folderType)
+                        navigateToFolderEdit(folder.folderType)
                     },
                 )
             }
@@ -133,7 +133,7 @@ private fun FolderHomePreview() {
         FolderHomeScreen(
             navigateUp = {},
             navigateToFolderMore = {},
-            navigateToChatlist = {},
+            navigateToFolderEdit = {},
         )
     }
 }
