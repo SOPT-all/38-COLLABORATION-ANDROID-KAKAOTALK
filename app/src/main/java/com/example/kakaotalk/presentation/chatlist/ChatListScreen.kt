@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -39,19 +40,19 @@ import com.example.kakaotalk.presentation.chatlist.model.FolderItemModel
 
 @Composable
 fun ChatListRoute(
-    modifier: Modifier = Modifier,
-    onNavigateToFolderHome: () -> Unit,
+    paddingValues: PaddingValues,
+    NavigateToFolderHome: () -> Unit,
     viewModel: ChatListViewModel = viewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     ChatListScreen(
         uiState = uiState,
-        modifier = modifier,
-        onFolderPlusClick = { onNavigateToFolderHome() },
+        modifier = Modifier.padding(paddingValues),
+        onFolderPlusClick = NavigateToFolderHome,
         onChatListItemClick = { id -> viewModel.showModal(id) },
-        onConfirmClick = { viewModel.confirmAction() },
-        onDismissClick = { viewModel.closeModal() }, // viewModel.modalVisible등
+        onConfirmClick = viewModel::confirmAction,
+        onDismissClick = viewModel::closeModal, // viewModel.modalVisible등
     )
 }
 
