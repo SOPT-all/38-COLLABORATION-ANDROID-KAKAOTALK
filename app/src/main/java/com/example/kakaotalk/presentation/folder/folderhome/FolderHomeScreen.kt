@@ -3,6 +3,7 @@ package com.example.kakaotalk.presentation.folder.folderhome
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -23,16 +24,16 @@ import com.example.kakaotalk.presentation.folder.folderhome.model.folderHomeNumb
 
 @Composable
 fun FolderHomeRoute(
+    paddingValues: PaddingValues,
     navigateUp: () -> Unit,
     navigateToFolderMore: () -> Unit,
     navigateToChatlist: (FolderType) -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     FolderHomeScreen(
         navigateUp = navigateUp,
         navigateToFolderMore = navigateToFolderMore,
         navigateToChatlist = navigateToChatlist,
-        modifier = modifier
+        modifier = Modifier.padding(paddingValues),
     )
 }
 
