@@ -3,6 +3,7 @@ package com.example.kakaotalk.presentation.folder.folderedit
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider
@@ -18,15 +19,18 @@ import com.example.kakaotalk.presentation.folder.foldermore.model.folderMoreList
 
 @Composable
 fun FolderMoreRoute(
-    modifier: Modifier = Modifier
+    paddingValues: PaddingValues,
+    navigateUp: () -> Unit,
 ) {
     FolderMoreScreen(
-        modifier = modifier
+        onBackClick = navigateUp,
+        modifier = Modifier.padding(paddingValues),
     )
 }
 
 @Composable
 private fun FolderMoreScreen(
+    onBackClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -40,7 +44,7 @@ private fun FolderMoreScreen(
         KakaoTopAppBar(
             modifier = Modifier,
             text = "채팅방 폴더 관리",
-            onBackClick = {},
+            onBackClick = onBackClick,
         )
 
         KakaoFolderHeader(
@@ -74,6 +78,8 @@ private fun FolderMoreScreen(
 @Composable
 private fun FolderMorePreview() {
     KakaoTheme {
-        FolderMoreScreen()
+        FolderMoreScreen(
+            onBackClick = {}
+        )
     }
 }
