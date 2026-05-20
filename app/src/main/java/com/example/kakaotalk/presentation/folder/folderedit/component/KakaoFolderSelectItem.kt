@@ -45,13 +45,7 @@ fun KakaoFolderSelectItem(
             )
 
             Text(
-                text = "전체 선택",
-                style = KakaoTheme.typography.body3,
-                color = KakaoTheme.colors.gray900
-            )
-
-            Text(
-                text = "(${selectedFolder}/${totalFolder})",
+                text = "전체 선택 (${selectedFolder}/${totalFolder})",
                 style = KakaoTheme.typography.body3,
                 color = KakaoTheme.colors.gray900
             )
@@ -60,7 +54,7 @@ fun KakaoFolderSelectItem(
         Spacer(modifier = Modifier.weight(1f))
 
         KakaoRoundedButton(
-            text = "선택 해제",
+            text = "선택 삭제",
             onClick = onClearClick,
             isClickable = selectedFolder > 0
         )
@@ -69,7 +63,7 @@ fun KakaoFolderSelectItem(
 
 @Preview (showBackground = true)
 @Composable
-private fun KaKaoKakaoFolderSelectItemPreview(){
+private fun KakaoFolderSelectItemPreview(){
     Column() {
         KakaoFolderSelectItem(
             totalFolder = 9,

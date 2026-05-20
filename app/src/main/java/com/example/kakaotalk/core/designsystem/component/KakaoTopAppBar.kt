@@ -12,7 +12,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -25,9 +24,8 @@ fun KakaoTopAppBar(
     text: String,
     onBackClick: () -> Unit,
     modifier: Modifier = Modifier,
-    onCompleteClick: () -> Unit = {},
-    completeTextColor: Color = KakaoTheme.colors.black,
-    showCompleteAction: Boolean = false
+    showCompleteAction: Boolean = false,
+    onChangeComplete: Boolean = false
 ){
     Box(
         modifier = modifier.fillMaxWidth()
@@ -56,10 +54,9 @@ fun KakaoTopAppBar(
             Text(
                 text = "완료",
                 modifier = Modifier
-                    .align(Alignment.CenterEnd)
-                    .noRippleClickable(onClick = onCompleteClick),
+                    .align(Alignment.CenterEnd),
                 style = KakaoTheme.typography.body2,
-                color = completeTextColor
+                color = if(onChangeComplete) KakaoTheme.colors.black else KakaoTheme.colors.gray500
             )
         }
     }
@@ -80,7 +77,6 @@ private fun KakaoTopAppBarPreview(){
             KakaoTopAppBar(
                 text = "폴더 편집",
                 onBackClick = {},
-                onCompleteClick = {},
                 showCompleteAction = true
             )
         }

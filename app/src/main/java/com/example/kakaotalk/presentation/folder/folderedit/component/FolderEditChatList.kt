@@ -17,6 +17,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.kakaotalk.R
+import com.example.kakaotalk.core.common.extension.noRippleClickable
 import com.example.kakaotalk.core.designsystem.component.KakaoChatProfile.KakaoChatRoomProfile
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 
@@ -24,13 +25,15 @@ import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 fun FolderEditChatList(
     chatName: String,
     peopleNum: Int,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
     isSelected: Boolean = false,
 ){
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp),
+            .padding(vertical = 8.dp)
+            .noRippleClickable(onClick = onClick),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -71,13 +74,15 @@ private fun FolderEditChatListPreview(){
         Column {
             FolderEditChatList(
                 chatName = "35기 SSARA 공지방",
-                peopleNum = 24
+                peopleNum = 24,
+                onClick = {}
             )
 
             FolderEditChatList(
                 chatName = "[Let’s SOPT] 벋벋 17조",
                 peopleNum = 7,
-                isSelected = true
+                isSelected = true,
+                onClick = {}
             )
         }
     }
