@@ -26,7 +26,7 @@ import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 @Composable
 fun FolderEditIcon(
     modifier: Modifier = Modifier,
-    onClick: () -> Unit = {},
+    onIconClick: (Int) -> Unit = {},
     isSelected: Boolean = false,
     @DrawableRes icon: Int = R.drawable.ic_no_exist_24
 ){
@@ -35,7 +35,7 @@ fun FolderEditIcon(
             .size(45.dp)
             .clip(shape = CircleShape)
             .let { if (isSelected) it.border(2.dp, KakaoTheme.colors.gray800, CircleShape) else it }
-            .noRippleClickable(onClick = onClick)
+            .noRippleClickable(onClick = {onIconClick(icon)})
             .background(color = KakaoTheme.colors.gray200),
         contentAlignment = Alignment.Center,
     ){
@@ -57,24 +57,24 @@ private fun FolderEditIconPreview() {
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                FolderEditIcon(onClick = {}, isSelected = true, icon = R.drawable.ic_no_exist_24)
-                FolderEditIcon(onClick = {}, isSelected = false, icon = R.drawable.ic_edit_house_24)
-                FolderEditIcon(onClick = {}, isSelected = false, icon = R.drawable.ic_edit_bag_24)
-                FolderEditIcon(onClick = {}, isSelected = false, icon = R.drawable.ic_edit_heart_24)
-                FolderEditIcon(onClick = {}, isSelected = false, icon = R.drawable.ic_edit_pencil_24)
-                FolderEditIcon(onClick = {}, isSelected = true, icon = R.drawable.ic_edit_redbag_24)
+                FolderEditIcon(onIconClick = {}, isSelected = true, icon = R.drawable.ic_no_exist_24)
+                FolderEditIcon(onIconClick = {}, isSelected = false, icon = R.drawable.ic_edit_house_24)
+                FolderEditIcon(onIconClick = {}, isSelected = false, icon = R.drawable.ic_edit_bag_24)
+                FolderEditIcon(onIconClick = {}, isSelected = false, icon = R.drawable.ic_edit_heart_24)
+                FolderEditIcon(onIconClick = {}, isSelected = false, icon = R.drawable.ic_edit_pencil_24)
+                FolderEditIcon(onIconClick = {}, isSelected = true, icon = R.drawable.ic_edit_redbag_24)
             }
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                FolderEditIcon(onClick = {}, isSelected = false, icon = R.drawable.ic_edit_card_24)
-                FolderEditIcon(onClick = {}, isSelected = false, icon = R.drawable.ic_edit_airplane_24)
-                FolderEditIcon(onClick = {}, isSelected = false, icon = R.drawable.ic_edit_plus_24)
-                FolderEditIcon(onClick = {}, isSelected = false, icon = R.drawable.ic_edit_chunsik_24)
-                FolderEditIcon(onClick = {}, isSelected = false, icon = R.drawable.ic_edit_lion_24)
-                FolderEditIcon(onClick = {}, isSelected = false, icon = R.drawable.ic_edit_jordi_24)
+                FolderEditIcon(onIconClick = {}, isSelected = false, icon = R.drawable.ic_edit_card_24)
+                FolderEditIcon(onIconClick = {}, isSelected = false, icon = R.drawable.ic_edit_airplane_24)
+                FolderEditIcon(onIconClick = {}, isSelected = false, icon = R.drawable.ic_edit_plus_24)
+                FolderEditIcon(onIconClick = {}, isSelected = false, icon = R.drawable.ic_edit_chunsik_24)
+                FolderEditIcon(onIconClick = {}, isSelected = false, icon = R.drawable.ic_edit_lion_24)
+                FolderEditIcon(onIconClick = {}, isSelected = false, icon = R.drawable.ic_edit_jordi_24)
             }
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                FolderEditIcon(onClick = {}, isSelected = false, icon = R.drawable.ic_edit_cat_24)
-                FolderEditIcon(onClick = {}, isSelected = false, icon = R.drawable.ic_edit_dog_24)
+                FolderEditIcon(onIconClick = {}, isSelected = false, icon = R.drawable.ic_edit_cat_24)
+                FolderEditIcon(onIconClick = {}, isSelected = false, icon = R.drawable.ic_edit_dog_24)
             }
         }
     }

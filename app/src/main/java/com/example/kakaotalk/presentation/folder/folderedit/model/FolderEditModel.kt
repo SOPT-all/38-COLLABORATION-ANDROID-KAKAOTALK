@@ -23,6 +23,7 @@ val iconList = listOf(
 
 @Immutable
 data class FolderEditChatListModel(
+    val id: String = UUID.randomUUID().toString(),
     val chatName: String,
     val peopleNum: Int,
 )

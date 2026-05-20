@@ -27,8 +27,10 @@ import com.example.kakaotalk.presentation.folder.folderedit.model.folderEditChat
 fun FolderEditBottomSection(
     totalChatCount: Int,
     selectedChatCount: Int,
+    selectedChatIds: Set<String>,
     onSelectAllClick: () -> Unit,
     onDeleteSelectedClick: () -> Unit,
+    onChatClick: (String) -> Unit,
     modifier: Modifier = Modifier,
     isAllChatSelected: Boolean = false
 ){
@@ -79,11 +81,13 @@ fun FolderEditBottomSection(
                 Spacer(modifier = Modifier.height(8.dp))
             }
 
-            items(folderEditChatList)
+            items(folderEditChatList, key = { it.id })
             { chatlist ->
                 FolderEditChatList(
                     chatName = chatlist.chatName,
-                    peopleNum = chatlist.peopleNum
+                    peopleNum = chatlist.peopleNum,
+                    isSelected = chatlist.id in selectedChatIds,
+                    onClick = { onChatClick(chatlist.id) }
                 )
             }
         }

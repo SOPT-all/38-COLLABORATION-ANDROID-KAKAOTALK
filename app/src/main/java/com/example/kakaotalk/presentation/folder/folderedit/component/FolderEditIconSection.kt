@@ -19,8 +19,8 @@ import com.example.kakaotalk.presentation.folder.folderedit.model.iconList
 
 @Composable
 fun FolderEditIconSection(
-    onIconClick: () -> Unit,
-    isIconSelected: Boolean,
+    onIconClick: (Int) -> Unit,
+    selectedIcon: Int?,
     modifier: Modifier = Modifier,
 ){
     Column(
@@ -42,8 +42,8 @@ fun FolderEditIconSection(
             items(iconList) { icon ->
                 FolderEditIcon(
                     modifier = Modifier.aspectRatio(1f),
-                    onClick = onIconClick,
-                    isSelected = isIconSelected,
+                    onIconClick = { onIconClick(icon) },
+                    isSelected = icon == selectedIcon,
                     icon = icon
                 )
             }
@@ -57,7 +57,7 @@ private fun FolderEditIconSectionPreview(){
     KakaoTheme{
         FolderEditIconSection(
             onIconClick = {},
-            isIconSelected = false
+            selectedIcon = null
         )
     }
 }
