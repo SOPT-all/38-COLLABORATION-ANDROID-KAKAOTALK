@@ -37,6 +37,10 @@ import com.example.kakaotalk.presentation.chatlist.component.menuButton.ChatList
 import com.example.kakaotalk.presentation.chatlist.component.menuButton.ChatListMenuPlusButton
 import com.example.kakaotalk.presentation.chatlist.model.ChatListItemModel
 import com.example.kakaotalk.presentation.chatlist.model.FolderItemModel
+import kotlinx.serialization.Serializable
+
+@Serializable
+data object ChatList
 
 @Composable
 fun ChatListRoute(

@@ -21,6 +21,10 @@ import com.example.kakaotalk.presentation.folder.folderhome.component.KakaoFolde
 import com.example.kakaotalk.presentation.folder.folderhome.model.FolderType
 import com.example.kakaotalk.presentation.folder.folderhome.model.folderHomeList
 import com.example.kakaotalk.presentation.folder.folderhome.model.folderHomeNumberList
+import kotlinx.serialization.Serializable
+
+@Serializable
+data object FolderHome
 
 @Composable
 fun FolderHomeRoute(

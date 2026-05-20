@@ -26,6 +26,10 @@ import com.example.kakaotalk.core.designsystem.component.KakaoButton
 import com.example.kakaotalk.core.designsystem.component.KakaoModal
 import com.example.kakaotalk.presentation.folder.folderedit.component.FolderEditBottomSection
 import com.example.kakaotalk.presentation.folder.folderedit.component.FolderEditTopSection
+import kotlinx.serialization.Serializable
+
+@Serializable
+data object FolderEdit
 
 @Composable
 fun FolderEditRoute(

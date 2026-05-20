@@ -16,6 +16,10 @@ import com.example.kakaotalk.core.designsystem.component.KakaoTopAppBar
 import com.example.kakaotalk.core.designsystem.theme.KakaoTheme
 import com.example.kakaotalk.presentation.folder.folderhome.component.KakaoFolderHeader
 import com.example.kakaotalk.presentation.folder.foldermore.model.folderMoreList
+import kotlinx.serialization.Serializable
+
+@Serializable
+data object FolderMore
 
 @Composable
 fun FolderMoreRoute(
